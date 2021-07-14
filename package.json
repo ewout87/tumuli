@@ -1,0 +1,15 @@
+{
+  "name": "tumuli",
+  "private": true,
+  "scripts": {
+    "develop": "gridsome develop",
+    "explore": "gridsome explore",
+    "build": "gridsome build"
+  },
+  "dependencies": {
+    "axios": "^0.21.1",
+    "gridsome": "^0.7.0",
+    "leaflet": "^1.7.1",
+    "vue2-leaflet": "^2.7.1"
+  }
+}
