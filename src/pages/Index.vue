@@ -1,11 +1,13 @@
 <template>
   <Layout>
+    <ClientOnly>
     <l-map id="map" :zoom="zoom" :center="center">
       <l-tile-layer :url="url"></l-tile-layer>
       <l-marker v-for="tumulus in tumuli" :key="tumulus.id" :lat-lng="tumulus.coords" :icon="icon" > 
         <l-tooltip :content="tumulus.title"></l-tooltip>
       </l-marker>
     </l-map>
+    </ClientOnly>
   </Layout>
 </template>
 
@@ -41,15 +43,6 @@ export default {
       iconSize: 64,
       tumuli: null
     };
-  },
-  icon() {
-    if (process.isClient) {
-      return L.icon({
-         iconUrl: 'https://image.flaticon.com/icons/png/128/595/595601.png',
-         iconSize: [32, 32],
-         iconAnchor: [16, 32]
-      });
-    }
   },
   mounted () {
       const results = data[0]
