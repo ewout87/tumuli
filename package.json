@@ -7,9 +7,16 @@
     "build": "gridsome build"
   },
   "dependencies": {
+    "@popperjs/core": "^2.9.2",
     "axios": "^0.21.1",
+    "bootstrap": "^5.0.2",
     "gridsome": "^0.7.0",
     "leaflet": "^1.7.1",
     "vue2-leaflet": "^2.7.1"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.3.1",
+    "postcss": "^8.3.5",
+    "tailwindcss": "^2.2.4"
   }
 }

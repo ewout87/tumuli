@@ -1,36 +1,95 @@
 <template>
   <Layout>
-    <l-map style="height: 100vh; width: 100vw" :zoom="zoom" :center="center">
-    <l-tile-layer :url="url"></l-tile-layer>
+    <l-map id="map" :zoom="zoom" :center="center">
+      <l-tile-layer :url="url"></l-tile-layer>
+      <l-marker v-for="tumulus in tumuli" :key="tumulus.id" :lat-lng="tumulus.coords" :icon="icon" > 
+        <l-tooltip :content="tumulus.title"></l-tooltip>
+      </l-marker>
     </l-map>
-    <div>
-      <div v-for="edge in $page.allTumuli.edges" :key="edge.node.title">
-        <h1 v-html="edge.node.title" />
-        <div v-html="edge.node.id"></div>
-      </div>
-    </div>
-
   </Layout>
 </template>
 
 <script>
-import L from 'leaflet';
-import { LMap, LTileLayer, LMarker } from 'vue2-leaflet';
+// import L from 'leaflet';
+// import { LMap, LTileLayer, LMarker, LIcon, LTooltip} from 'vue2-leaflet';
+import data from '@/data/tumuli.json'
+let L = {}
+let Vue2Leaflet = {}
+
+if (process.isClient) {
+  L = require("leaflet");
+  Vue2Leaflet = require("vue2-leaflet");
+}
 
 export default {
   name: 'MyAwesomeMap',
   components: {
-    LMap,
-    LTileLayer,
-    LMarker,
+    LMap: Vue2Leaflet.LMap,
+    LTileLayer: Vue2Leaflet.LTileLayer,
+    LMarker: Vue2Leaflet.LMarker,
+    LTooltip: Vue2Leaflet.LTooltip,
+    LIcon: Vue2Leaflet.LIcon
   },
   data () {
     return {
       url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-      zoom: 10,
-      center: [50.71575438472916, 4.610677249749641],
-      bounds: null
+      zoom: 11,
+      center: [50.67198817403728, 5.077813266040513],
+      bounds: null,
+      icon: null,
+      staticAnchor: [16, 32],
+      iconSize: 64,
+      tumuli: null
     };
+  },
+  icon() {
+    if (process.isClient) {
+      return L.icon({
+         iconUrl: 'https://image.flaticon.com/icons/png/128/595/595601.png',
+         iconSize: [32, 32],
+         iconAnchor: [16, 32]
+      });
+    }
+  },
+  mounted () {
+      const results = data[0]
+      var id = 0
+      var tumuli = []
+
+      for (const result of results.data) {
+        var latln = result[6].split(',')
+
+        if(latln.length > 1){
+          var coords = []
+
+          for (var dms of latln) {
+            var dms = dms.split(/°|'|"/)
+            var degrees = parseFloat(dms[0])
+            var minutes = parseFloat(dms[1]/60)
+            var seconds = parseFloat(dms[2]/3600)
+            var dd = parseFloat(degrees + minutes + seconds)
+            coords.push(dd)
+          }
+          
+          var tumulus = {
+            id: ++id,
+            title: result[4],
+            coords: coords,
+          }
+
+          tumuli.push(tumulus)
+        }
+      }
+
+      this.tumuli = tumuli
+      
+      if (process.isClient) {
+        this.icon =  L.icon({
+          iconUrl: 'https://image.flaticon.com/icons/png/128/595/595601.png',
+          iconSize: [32, 32],
+          iconAnchor: [16, 32]
+        });
+      }
   },
   methods: {
     zoomUpdated (zoom) {
@@ -53,6 +112,7 @@ query {
       node {
         id
         title
+        coords
       }
     }
   }

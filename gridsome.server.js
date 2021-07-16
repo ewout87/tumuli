@@ -28,10 +28,26 @@ module.exports = function (api) {
     var id = 0
 
       for (const tumulus of tumuli.data) {
+        var latln = tumulus[6].split(',')
+
+        if(latln.length > 1){
+          var coords = []
+
+          for (var dms of latln) {
+            var dms = dms.split(/°|'|"/)
+            var degrees = parseFloat(dms[0])
+            var minutes = parseFloat(dms[1]/60)
+            var seconds = parseFloat(dms[2]/3600)
+            var dd = parseFloat(degrees + minutes + seconds)
+            coords.push(dd)
+          }
+
         collection.addNode({
           id: ++id,
-          title: tumulus[4]
+          title: tumulus[4],
+          coords: coords
         })
+      }
     }
   })
 }

@@ -1,13 +1,21 @@
 <template>
   <div class="layout">
-    <header class="header">
-      <strong>
-        <g-link to="/">{{ $static.metadata.siteName }}</g-link>
-      </strong>
-      <nav class="nav">
-        <g-link class="nav__link" to="/">Home</g-link>
-        <g-link class="nav__link" to="/about/">About</g-link>
+    <nav>
+        <div class="logo">
+          <g-link class="nav__link" to="/">
+            <img src="https://image.flaticon.com/icons/png/128/595/595601.png" alt="Logo" width="50" height="50">
+          </g-link>
+          <div class="sitename">
+            <p>Gallo-Romeinse<br><strong>Tumuli</strong></p>
+          </div>
+        </div>
+        <form class="search">
+          <input type="text">
+          <button><i class="fas fa-search"></i></button>
+        </form>   
       </nav>
+    <header class="header">
+      <div class="text-wrapper"></div>
     </header>
     <slot/>
   </div>
@@ -21,23 +29,3 @@ query {
 }
 </static-query>
 
-<style>
-body {
-  font-family: -apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
-  margin:0;
-  padding:0;
-  line-height: 1.5;
-}
-
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 20px;
-  height: 80px;
-}
-
-.nav__link {
-  margin-left: 20px;
-}
-</style>
