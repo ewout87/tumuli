@@ -1,6 +1,6 @@
 <template>
   <div class="layout">
-    <nav>
+    <nav class="navbar">
         <div class="logo">
           <g-link class="nav__link" to="/">
             <img src="https://image.flaticon.com/icons/png/128/595/595601.png" alt="Logo" width="50" height="50">
@@ -14,10 +14,7 @@
           <button><i class="fas fa-search"></i></button>
         </form>   
       </nav>
-    <header class="header">
-      <div class="text-wrapper"></div>
-    </header>
-    <slot/>
+      <slot/>
   </div>
 </template>
 

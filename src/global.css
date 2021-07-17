@@ -7,20 +7,25 @@ body {
     padding:0;
     line-height: 1.5;
 }
-  
-.header {
+
+.layout {
+    width: 100%
+}
+
+.card {
     position: fixed;
-    width: 25vw;
+    top: 0;
+    left: 0;
+    width: 25%;
     height: 100vh;
     z-index: 3;
     margin-bottom: 20px;
-    padding: 1rem;
-    background: url('https://www.visitlimburg.be/sites/default/files/public/import/Verborgen%20moois%20Gallo-Romeinse%20tumuli_4836_1.jpg') center center;
     background-repeat: no-repeat;
     background-size: cover;
+    transition: all .25s ease-in-out;
 }
 
-.header::after {
+/* .card::after {
     content: '';
     position: absolute;
     left: 0;
@@ -30,31 +35,40 @@ body {
     display: block;
     z-index: 3;
     background: linear-gradient(#fff, transparent);
+} */
+
+.container {
+    width: 100%;
 }
 
-nav {
+.navbar {
     display: flex;
     justify-content: space-between;
     align-items: end;
-    flex-wrap: wrap;
+    flex-flow: row nowrap;
     background: #add19e;;
     position: fixed;
     z-index: 4;
-    width: 25vw;
+    width: 25%;
     top: 0;
     left: 0;
-    padding: 1rem;
+    padding: 1rem 0;
 }
 
 .logo {
     text-align: center;
+    margin-left: 1rem;
 }
   
-form {
+.search {
     margin-left: auto;
-    display: flex;
-    flex-wrap: nowrap;
+    margin-right: 1rem;
+    display: block;
     margin-bottom: 6px;
+}
+
+.fa-search {
+    display: inline-block;
 }
 
 .sitename {
@@ -76,7 +90,8 @@ form {
 
 #map {
     height: 100vh; 
-    width: 100vw; 
+    width: 75%; 
+    margin-left: auto;
     position:relative; 
     z-index: 1;
 }
@@ -105,6 +120,32 @@ form {
 .search button:hover {
     cursor: pointer;
 }
+  
+@media only screen and (max-width: 1600px) {
+    .card,
+    .navbar {
+        width: 33%;
+    }
 
-.text-wrapper {
+    #map {
+        width: 67%;
+    }
 }
+
+@media only screen and (max-width: 1079px) {
+    .navbar {
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .card,
+    .navbar {
+        position: relative;
+        width: 100%;
+    }
+
+    #map {
+        width: 100%;
+    }
+  }

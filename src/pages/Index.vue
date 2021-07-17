@@ -1,12 +1,14 @@
 <template>
   <Layout>
     <ClientOnly>
-    <l-map id="map" :zoom="zoom" :center="center">
+    <l-map id="map" :zoom="zoom" :center="center" :options="{zoomControl: false}">
       <l-tile-layer :url="url"></l-tile-layer>
-      <l-marker v-for="tumulus in tumuli" :key="tumulus.id" :lat-lng="tumulus.coords" :icon="icon" > 
+      <l-marker v-for="tumulus in tumuli" :key="tumulus.id" :lat-lng="tumulus.coords" :icon="icon" @click="onClick"> 
         <l-tooltip :content="tumulus.title"></l-tooltip>
       </l-marker>
+      <l-control-zoom position="bottomright"  ></l-control-zoom>
     </l-map>
+    <div class="card" v-bind:style="{ background: backgroundImage}"></div>
     </ClientOnly>
   </Layout>
 </template>
@@ -15,6 +17,7 @@
 // import L from 'leaflet';
 // import { LMap, LTileLayer, LMarker, LIcon, LTooltip} from 'vue2-leaflet';
 import data from '@/data/tumuli.json'
+import axios from 'axios'
 let L = {}
 let Vue2Leaflet = {}
 
@@ -30,7 +33,8 @@ export default {
     LTileLayer: Vue2Leaflet.LTileLayer,
     LMarker: Vue2Leaflet.LMarker,
     LTooltip: Vue2Leaflet.LTooltip,
-    LIcon: Vue2Leaflet.LIcon
+    LIcon: Vue2Leaflet.LIcon,
+    LControlZoom: Vue2Leaflet.LControlZoom
   },
   data () {
     return {
@@ -41,10 +45,11 @@ export default {
       icon: null,
       staticAnchor: [16, 32],
       iconSize: 64,
-      tumuli: null
+      tumuli: null,
+      backgroundImage: 'url("https://www.visitlimburg.be/sites/default/files/public/import/Verborgen%20moois%20Gallo-Romeinse%20tumuli_4836_1.jpg") center center'
     };
   },
-  mounted () {
+  async mounted () {
       const results = data[0]
       var id = 0
       var tumuli = []
@@ -93,6 +98,23 @@ export default {
     },
     boundsUpdated (bounds) {
       this.bounds = bounds;
+    },
+    async onClick () {
+      try {
+      const {data} = await axios.get(
+        'http://en.wikipedia.org/w/api.php?action=query&prop=pageimages&format=json&piprop=original&titles=India&format=json' + '&origin=*'
+      )
+
+      var pages = data
+      console.log(pages)
+
+        for(var page of pages){
+          page.original.source
+          this.backgroundImage = 'url("'+ page.original.source +'") center center'
+        }
+      } catch (error) {
+        console.log(error)
+      }
     }
   }
 };
