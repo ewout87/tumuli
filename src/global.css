@@ -22,7 +22,8 @@ body {
     margin-bottom: 20px;
     background-repeat: no-repeat;
     background-size: cover;
-    transition: all .25s ease-in-out;
+    -webkit-transition: background-image 0.2s ease-in-out;
+    transition: background-image 0.2s ease-in-out;
 }
 
 /* .card::after {

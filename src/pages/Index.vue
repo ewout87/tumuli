@@ -3,12 +3,12 @@
     <ClientOnly>
     <l-map id="map" :zoom="zoom" :center="center" :options="{zoomControl: false}">
       <l-tile-layer :url="url"></l-tile-layer>
-      <l-marker v-for="tumulus in tumuli" :key="tumulus.id" :lat-lng="tumulus.coords" :icon="icon" @click="onClick"> 
+      <l-marker v-for="tumulus in tumuli" :key="tumulus.id" :lat-lng="tumulus.coords" :icon="icon" @click="centerUpdated(tumulus.coords), getImage(tumulus.title)"> 
         <l-tooltip :content="tumulus.title"></l-tooltip>
       </l-marker>
       <l-control-zoom position="bottomright"  ></l-control-zoom>
     </l-map>
-    <div class="card" v-bind:style="{ background: backgroundImage}"></div>
+    <div class="card" v-bind:style="{ 'background-image': backgroundImage, 'background-position': 'center center', 'transition': 'background-image 0.2s ease-in-out'}">{{pages}}</div>
     </ClientOnly>
   </Layout>
 </template>
@@ -46,7 +46,8 @@ export default {
       staticAnchor: [16, 32],
       iconSize: 64,
       tumuli: null,
-      backgroundImage: 'url("https://www.visitlimburg.be/sites/default/files/public/import/Verborgen%20moois%20Gallo-Romeinse%20tumuli_4836_1.jpg") center center'
+      pages: null,
+      backgroundImage: 'url("https://www.visitlimburg.be/sites/default/files/public/import/Verborgen%20moois%20Gallo-Romeinse%20tumuli_4836_1.jpg")'
     };
   },
   async mounted () {
@@ -94,24 +95,23 @@ export default {
       this.zoom = zoom;
     },
     centerUpdated (center) {
-      this.center = center;
+      this.center = center
     },
     boundsUpdated (bounds) {
       this.bounds = bounds;
     },
-    async onClick () {
+    async getImage(title) {
       try {
       const {data} = await axios.get(
-        'http://en.wikipedia.org/w/api.php?action=query&prop=pageimages&format=json&piprop=original&titles=India&format=json' + '&origin=*'
+        'http://nl.wikipedia.org/w/api.php?lang=nl&action=query&prop=pageimages&format=json&piprop=original&titles=' + title + '&format=json' + '&origin=*'
       )
 
-      var pages = data
-      console.log(pages)
+      var pages = data.query.pages
 
-        for(var page of pages){
-          page.original.source
-          this.backgroundImage = 'url("'+ page.original.source +'") center center'
-        }
+      var page = Object.entries(pages)[0]
+
+      this.backgroundImage = 'url("'+ page[1].original.source +'")'
+
       } catch (error) {
         console.log(error)
       }
