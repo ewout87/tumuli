@@ -3,12 +3,17 @@
     <ClientOnly>
     <l-map id="map" :zoom="zoom" :center="center" :options="{zoomControl: false}">
       <l-tile-layer :url="url"></l-tile-layer>
-      <l-marker v-for="tumulus in tumuli" :key="tumulus.id" :lat-lng="tumulus.coords" :icon="icon" @click="centerUpdated(tumulus.coords), getImage(tumulus.title)"> 
-        <l-tooltip :content="tumulus.title"></l-tooltip>
+      <l-marker v-for="edge in $page.allTumuli.edges" :key="edge.node.id" :lat-lng="edge.node.coords" :icon="icon" @click="centerUpdated(edge.node.coords), setImage(edge.node.image)"> 
+        <l-tooltip :content="edge.node.title"></l-tooltip>
+        <l-popup html="tumulus.image">
+          <h3>{{ edge.node.title }}</h3>
+          <g-image :src="require(`!!assets-loader?width=250&height=250!@images/${imageUrl}`)" :alt="edge.node.title" width="500" fit="contain"/></l-popup>
       </l-marker>
-      <l-control-zoom position="bottomright"  ></l-control-zoom>
+      <l-control-zoom position="bottomright"></l-control-zoom>
     </l-map>
-    <div class="card" v-bind:style="{ 'background-image': backgroundImage, 'background-position': 'center center', 'transition': 'background-image 0.2s ease-in-out'}">{{pages}}</div>
+    <div class="card" v-bind:style="{ 'background-image': backgroundImage, 'background-position': 'center center', 'transition': 'background-image 0.2s ease-in-out'}">
+      <div class="text-wrapper"></div>
+    </div>
     </ClientOnly>
   </Layout>
 </template>
@@ -34,6 +39,7 @@ export default {
     LMarker: Vue2Leaflet.LMarker,
     LTooltip: Vue2Leaflet.LTooltip,
     LIcon: Vue2Leaflet.LIcon,
+    LPopup:  Vue2Leaflet.LPopup,
     LControlZoom: Vue2Leaflet.LControlZoom
   },
   data () {
@@ -43,50 +49,25 @@ export default {
       center: [50.67198817403728, 5.077813266040513],
       bounds: null,
       icon: null,
+      popup: null,
       staticAnchor: [16, 32],
       iconSize: 64,
       tumuli: null,
       pages: null,
+      imageUrl: 'no-image-available.png',
       backgroundImage: 'url("https://www.visitlimburg.be/sites/default/files/public/import/Verborgen%20moois%20Gallo-Romeinse%20tumuli_4836_1.jpg")'
     };
   },
   async mounted () {
-      const results = data[0]
-      var id = 0
-      var tumuli = []
-
-      for (const result of results.data) {
-        var latln = result[6].split(',')
-
-        if(latln.length > 1){
-          var coords = []
-
-          for (var dms of latln) {
-            var dms = dms.split(/°|'|"/)
-            var degrees = parseFloat(dms[0])
-            var minutes = parseFloat(dms[1]/60)
-            var seconds = parseFloat(dms[2]/3600)
-            var dd = parseFloat(degrees + minutes + seconds)
-            coords.push(dd)
-          }
-          
-          var tumulus = {
-            id: ++id,
-            title: result[4],
-            coords: coords,
-          }
-
-          tumuli.push(tumulus)
-        }
-      }
-
-      this.tumuli = tumuli
-      
       if (process.isClient) {
         this.icon =  L.icon({
           iconUrl: 'https://image.flaticon.com/icons/png/128/595/595601.png',
           iconSize: [32, 32],
           iconAnchor: [16, 32]
+        });
+
+        this.popup = L.popup({
+          maxWidth: 560
         });
       }
   },
@@ -98,23 +79,10 @@ export default {
       this.center = center
     },
     boundsUpdated (bounds) {
-      this.bounds = bounds;
+      this.bounds = bounds
     },
-    async getImage(title) {
-      try {
-      const {data} = await axios.get(
-        'http://nl.wikipedia.org/w/api.php?lang=nl&action=query&prop=pageimages&format=json&piprop=original&titles=' + title + '&format=json' + '&origin=*'
-      )
-
-      var pages = data.query.pages
-
-      var page = Object.entries(pages)[0]
-
-      this.backgroundImage = 'url("'+ page[1].original.source +'")'
-
-      } catch (error) {
-        console.log(error)
-      }
+    setImage(image) {
+      this.imageUrl = image
     }
   }
 };
@@ -128,6 +96,7 @@ query {
         id
         title
         coords
+        image
       }
     }
   }
