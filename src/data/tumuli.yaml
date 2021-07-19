@@ -17,7 +17,7 @@ data:
   - Quévy
   - 50° 21' 56" NB, 4° 1' 42" OL
   - ''
-  - no-image-available.png
+  - 'NA'
 - - '3'
   - 077Bd
   - 31/7N
@@ -26,7 +26,7 @@ data:
   - Watermaal-Bosvoorde
   - 50° 47' 16" NB, 4° 24' 21" OL
   - ''
-  - Tumuli_van_het_Zoniënwoud.jpg
+  - Tumuli_van_het_Zonienwoud.jpg
 - - '4'
   - '082Ba'
   - 46/8S
@@ -44,7 +44,7 @@ data:
   - Huldenberg
   - ''
   - ''
-  - no-image-available.png
+  - 'NA'
 - - '6'
   - '096Bd'
   - 40/5N
@@ -62,7 +62,7 @@ data:
   - Villers-la-Ville
   - 50° 34' 36" NB, 4° 33' 17" OL
   - ''
-  - no-image-available.png
+  - 'NA'
 - - '8'
   - 114Aa
   - 40/2S
@@ -107,7 +107,7 @@ data:
   - Tienen
   - 50° 47' 59" NB, 4° 57' 30" OL
   - ''
-  - no-image-available.png
+  - 'NA'
 - - '13'
   - 133Ac
   - 40/4N
@@ -161,7 +161,7 @@ data:
   - Hannuit
   - 50° 38' 18" NB, 4° 59' 48" OL
   - ''
-  - no-image-available.png
+  - 'NA'
 - - '20'
   - 134Bc
   - 41/5N
@@ -202,11 +202,11 @@ data:
   - 135Ab
   - 41/5S
   - '3'
-  - Tumuli van Seron
+  - Tumuli van Séron
   - Fernelmont
   - 50° 35' 38" NB, 5° 0' 30" OL
   - ''
-  - Tumuli_de_Séron.jpg
+  - Tumuli_van_Seron.jpg
 - - '25'
   - 135Bb
   - 41/6N
@@ -233,7 +233,7 @@ data:
   - Gingelom
   - 50° 42' 35" NB, 5° 9' 40" OL
   - ''
-  - no-image-available.png
+  - 'NA'
 - - '28'
   - 151Bc
   - 41/3N
@@ -305,7 +305,7 @@ data:
   - Borgworm
   - 50° 40' 43" NB, 5° 14' 26" OL
   - ''
-  - no-image-available.png
+  - 'NA'
 - - '36'
   - 152Ba
   - 41/3S
@@ -476,7 +476,7 @@ data:
   - Riemst
   - 50° 48' 24" NB, 5° 33' 16" OL
   - '1980'
-  - no-image-available.png
+  - 'NA'
 - - '56'
   - 189Ac
   - 34/5S
@@ -503,7 +503,7 @@ data:
   - Heers
   - 50° 46' 12" NB, 5° 19' 57" OL
   - ''
-  - no-image-available.png
+  - 'NA'
 - - '59'
   - 190Ba
   - 34/7N
@@ -530,7 +530,7 @@ data:
   - Chaumont-Gistoux
   - 50° 41' 50" NB, 4° 42' 26" OL
   - ''
-  - no-image-available.png
+  - 'NA'
 - - '63'
   - ''
   - ''

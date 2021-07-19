@@ -3,7 +3,7 @@
     <nav class="navbar">
         <div class="logo">
           <g-link class="nav__link" to="/">
-            <img src="https://image.flaticon.com/icons/png/128/595/595601.png" alt="Logo" width="50" height="50">
+            <g-image src="~/assets/images/icon.png" alt="Logo" width="50" height="50"/>
           </g-link>
           <div class="sitename">
             <p>Gallo-Romeinse<br><strong>Tumuli</strong></p>
