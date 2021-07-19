@@ -10,6 +10,7 @@
     "@popperjs/core": "^2.9.2",
     "axios": "^0.21.1",
     "gridsome": "^0.7.0",
+    "js-yaml": "^4.1.0",
     "leaflet": "^1.7.1",
     "vue2-leaflet": "^2.7.1"
   },
