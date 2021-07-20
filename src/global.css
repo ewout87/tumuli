@@ -1,11 +1,12 @@
-@import url('https://fonts.googleapis.com/css?family=OpenSans+Condensed');
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css');
+@import url('https://fonts.googleapis.com/css2?family=Jost&family=Open+Sans&family=Roboto:wght@700&display=swap');
 
 body {
-    font-family: 'Open sans', Sans-serif;
+    font-family: 'Jost', Sans-serif;
     margin:0;
     padding:0;
-    line-height: 1.5;
+    line-height: 1.2rem;
+    color: rgba(0,0,0,0.8);
 }
 
 .layout {
@@ -31,12 +32,59 @@ body {
 .text-wrapper {
     background: #fff;
     margin: 2rem;
-    padding: 0 1rem;
-    overflow: visible;
+    position: absolute;
+    width: calc(100% - 4rem);
+    top: 86px;
+    background-color: #f8f8f8;
+}
+
+.text-header {
+    padding: 1rem;
+    background-color: #e7ecf3;
+    font-size: 1.5rem;
+    display: flex;
+}
+
+.text-body {
+    overflow: scroll;
+}
+
+#search {
+    font-family: 'Jost', sans-serif;
+    font-size: 1rem;
+    line-height: 1.2rem;
+    background-color: transparent;
+    border: 0px solid;
+    border-bottom: 1px solid rgba(0,0,0,0.8);
+    margin-left: 1rem;
+}
+
+#search:focus {
+    outline: none;
+}
+
+.results {
+    max-height: 50vh;
+}
+
+.no-results {
+    display: flex;
+}
+
+.no-results i {
+    margin: 1rem 0;
+    color: #f66;
+}
+
+.no-results p {
+    margin-left: 1rem;
 }
 
 .card {
     cursor: pointer;
+    list-style: none;
+    margin-left: -1rem;
+    margin-bottom: 1rem;
 }
 
 .container {
@@ -58,6 +106,7 @@ body {
 }
 
 .no-image:after {
+    font-family: 'Roboto', sans-serif;
     position: absolute;
     display: block;
     content: 'Geen afbeelding';
@@ -73,7 +122,6 @@ body {
     font-weight: bold;
     text-align: center;
     padding-top: 6rem;
-
 }
 
 .navbar {
@@ -97,21 +145,13 @@ body {
     text-align: center;
     margin-left: 1rem;
 }
-  
-.search {
-    margin-left: auto;
-    margin-right: 1rem;
-    margin-bottom: 6px;
-}
-
-.fa-search {
-    display: inline-block;
-}
 
 .sitename {
+    font-family: 'Roboto', sans-serif;
     text-transform: uppercase;
     font-weight: bolder;
     text-align: center;
+    line-height: 1.5rem;
 }
   
 .sitename p {
@@ -121,8 +161,8 @@ body {
   
 .sitename strong {
     font-size: 2rem;
-    line-height: 1rem;
-    letter-spacing: 2px;
+    line-height: 1.5rem;
+    letter-spacing: 3px;
 }
 
 #map {
@@ -133,30 +173,53 @@ body {
     z-index: 1;
 }
 
-.search input {
-    background-color: transparent;
-    border: 0px solid;
-    border-bottom: 2px solid #fff;
-    color: #fff;
-    font-size: 1.5rem;
-    caret-color: #fff;
-    max-width: 120px;
+.leaflet-container {
+    font-family: 'Jost', sans-serif;
 }
 
-.search input:focus {
-    outline: none;
+.icon-scroll,
+.icon-scroll:before {
+    position: absolute;
+    left: 50%;
+    z-index: 5;
 }
 
-.search button {
-    border: none;
-    background-color: transparent;
-    color: #fff;
-    font-size: 2rem;
+
+.icon-scroll {
+    width: 40px;
+    height: 70px;
+    margin-left: -20px;
+    bottom: 0;
+    margin-top: -35px;
+    box-shadow: inset 0 0 0 2px #fff;
+    border-radius: 25px;
+}
+  
+
+.icon-scroll:before {
+    content: '';
+    width: 8px;
+    height: 8px;
+    background: #fff;
+    margin-left: -4px;
+    top: 8px;
+    border-radius: 4px;
+    animation-duration: 1.5s;
+    animation-iteration-count: infinite;
+    animation-name: scroll;
 }
 
-.search button:hover {
-    cursor: pointer;
+@keyframes scroll {
+    0% {
+        opacity: 1; 
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(46px);
+    }
 }
+  
+ 
   
 @media only screen and (max-width: 1600px) {
     .sidebar,
@@ -169,13 +232,6 @@ body {
     }
 }
 
-@media only screen and (max-width: 1279px) {
-    .navbar {
-        width: 100%;
-        position: relative;
-    }
-}
-
 @media only screen and (max-width: 768px) {
     .sidebar,
     .navbar {
@@ -185,5 +241,11 @@ body {
 
     #map {
         width: 100%;
+        height: 75vh;
+    }
+
+    .text-wrapper {
+        top: unset;
+        bottom: 0;
     }
   }

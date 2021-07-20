@@ -9,12 +9,8 @@
             <p>Gallo-Romeinse<br><strong>Tumuli</strong></p>
           </div>
         </div>
-        <form class="search">
-          <input type="text">
-          <button><i class="fas fa-search"></i></button>
-        </form>   
       </nav>
-      <slot/>
+      <slot></slot>
   </div>
 </template>
 

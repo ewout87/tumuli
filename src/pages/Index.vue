@@ -1,4 +1,4 @@
-<template>
+<template v-slot:search>
   <Layout>
     <ClientOnly>
     <l-map id="map" ref="map" :zoom="zoom" :center="center" :options="{zoomControl: false}">
@@ -14,11 +14,21 @@
       </l-marker>
       <l-control-zoom position="bottomright"></l-control-zoom>
     </l-map>
+    <div class='icon-scroll'></div>
     <div class="sidebar">
-      <div class="text-wrapper">
-        <ul>
-          <li class="card" v-for="edge in $page.allTumuli.edges" :ref="edge.node.id" :key="edge.node.id"  @click="flyToMarker(edge.node.coords, edge.node.id)">{{edge.node.title}}</li>
-        </ul>
+      <div class="text-wrapper" >
+        <div class="text-header">
+          <i class="fas fa-search-location"></i>
+          <input type="text" name="search" id="search" placeholder="Plaatsnaam..." v-model="search">
+        </div>
+        <div class="text-body results" v-if="searchResults.length > 0">
+          <ul>
+            <li class="card" v-for="tumulus in searchResults" :key="tumulus.node.id"  @click="flyToMarker(tumulus.node.coords, tumulus.node.id)">{{tumulus.node.title}} - {{tumulus.node.location}}</li>
+          </ul>
+        </div>
+        <div class="text-body no-results" v-else>
+          <p>Geen tumuli gevonden op deze locatie.</p>
+        </div>
       </div>
     </div>
     </ClientOnly>
@@ -26,8 +36,6 @@
 </template>
 
 <script>
-import data from '@/data/tumuli.json'
-import axios from 'axios'
 let L = {}
 let Vue2Leaflet = {}
 
@@ -58,9 +66,9 @@ export default {
       staticAnchor: [16, 32],
       iconSize: 64,
       tumuli: null,
-      pages: null,
       image: 'background.png',
       imageClass: 'no-image',
+      search: ''
     };
   },
   mounted () {
@@ -71,6 +79,13 @@ export default {
           iconAnchor: [16, 32]
         });
       } 
+  },
+  computed: {
+    searchResults() {
+      return this.$page.allTumuli.edges.filter(tumulus => {
+        return tumulus.node.title.toLowerCase().includes(this.search.toLowerCase().trim())
+      })
+    }
   },
   methods: {
     zoomUpdated (zoom) {
@@ -86,8 +101,8 @@ export default {
         this.image = image
     },
     flyToMarker(coords, id) {
-      this.$refs.map.mapObject.flyTo(coords, 16)
-    }
+      this.$refs.map.mapObject.flyTo(coords, 15)
+    },
   }
 };
 </script>
@@ -101,6 +116,7 @@ query {
         title
         coords
         image
+        location
       }
     }
   }

@@ -62,7 +62,8 @@ module.exports = function (api) {
           id: tumulus[0],
           title: tumulus[4],
           image: tumulus[8],
-          coords: coords
+          coords: coords,
+          location: tumulus[5]
         })
       }
     }
