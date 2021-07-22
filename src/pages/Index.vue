@@ -62,9 +62,12 @@ export default {
   data () {
     return {
       url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-      zoom: 11,
+      zoom: 10,
       center: [50.67198817403728, 5.077813266040513],
-      bounds: null,
+      bounds: [
+        [50.80667, 3.461389],
+        [50.23167, 6.115278]
+      ],
       icon: null,
       popup: null,
       staticAnchor: [16, 32],
@@ -87,7 +90,7 @@ export default {
   computed: {
     searchResults() {
       return this.$page.allTumuli.edges.filter(tumulus => {
-        return tumulus.node.location.toLowerCase().includes(this.search.toLowerCase().trim())
+        return tumulus.node.title.toLowerCase().includes(this.search.toLowerCase().trim())
       })
     }
   },
@@ -112,18 +115,35 @@ export default {
 
       try {
       const data = await axios.get(
-        `https://nominatim.openstreetmap.org/search?q=` + search + `&format=json`
+        `https://nominatim.openstreetmap.org/search?q=` + search + ` Belgie&format=json`
       )
+
+        // var coords1 = [50.67198817403728, 5.077813266040513] 
+       
+        //  for(var tumulus in this.$page.allTumuli.edges){
+        //     var ids = []
+        //     var coords2 = tumulus.node.coords
+        //     var d = this.calculateDistance(coords1, coords2)
+
+        //     if(d < 50000){
+        //       ids.push(tumulus.node.id)
+        //     }
+        // }
+
+        // return this.$page.allTumuli.edges.filter(tumulus => {
+        //   return tumulus.node.id.includes()
+        // })
 
         var bounds = L.latLngBounds([
           [data.data[0].boundingbox[1], data.data[0].boundingbox[2]],
           [data.data[0].boundingbox[0], data.data[0].boundingbox[3]]
         ])
+
+        this.$refs.map.fitBounds(bounds)
       } 
       catch (error) {
         console.log(error)
       }
-      this.$refs.map.fitBounds(bounds)
     },
     scrollToBottom() {
       const el = this.$refs.scrollToMe;
@@ -132,6 +152,22 @@ export default {
         // Use el.scrollIntoView() to instantly scroll to the element
         el.scrollIntoView({behavior: 'smooth'});
       }
+    },
+    calculateDistance(coords1, coords2){
+      const R = 6371e3; // metres
+      const φ1 = coords1[1] * Math.PI/180; // φ, λ in radians
+      const φ2 = coords2[1] * Math.PI/180;
+      const Δφ = (coords2[1]-coords1[1]) * Math.PI/180;
+      const Δλ = (coords2[2]-coords2[2]) * Math.PI/180;
+
+      const a = Math.sin(Δφ/2) * Math.sin(Δφ/2) +
+                Math.cos(φ1) * Math.cos(φ2) *
+                Math.sin(Δλ/2) * Math.sin(Δλ/2);
+      const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+
+      const d = R * c; // in metres
+
+      return d
     }
   }
 };
@@ -139,7 +175,7 @@ export default {
 
 <page-query>
 query {
-  allTumuli {
+  allTumuli(sortBy: "title", order: ASC) {
     edges {
       node {
         id
