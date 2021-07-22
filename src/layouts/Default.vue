@@ -6,7 +6,7 @@
             <g-image src="~/assets/images/icon.png" alt="Logo" width="50" height="50"/>
           </g-link>
           <div class="sitename">
-            <p>Gallo-Romeinse<br><strong>Tumuli</strong></p>
+            <p>Bezoek onze<br><strong>Tumuli</strong></p>
           </div>
         </div>
       </nav>

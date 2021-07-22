@@ -5,7 +5,7 @@
 // To restart press CTRL + C in terminal and run `gridsome develop`
 
 module.exports = {
-  siteName: 'Gallo-Romeinse tumuli',
+  siteName: 'Bezoek onze tumuli',
   plugins: [],
   chainWebpack: config => {
     config.resolve.alias.set('@images', '@/assets/images')

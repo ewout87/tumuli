@@ -14,16 +14,18 @@
       </l-marker>
       <l-control-zoom position="bottomright"></l-control-zoom>
     </l-map>
-    <div class='icon-scroll'></div>
+    <div class='icon-scroll' @click="scrollToBottom()"></div>
     <div class="sidebar">
-      <div class="text-wrapper" >
+      <div class="text-wrapper" ref="scrollToMe">
         <div class="text-header">
-          <i class="fas fa-search-location"></i>
-          <input type="text" name="search" id="search" placeholder="Plaatsnaam..." v-model="search">
+          <form>
+            <input type="text" name="search" id="search" placeholder="Plaatsnaam..." v-model="search"> 
+            <button href="" @click="flyToLocation(search)">Zoek</button>
+          </form>
         </div>
         <div class="text-body results" v-if="searchResults.length > 0">
           <ul>
-            <li class="card" v-for="tumulus in searchResults" :key="tumulus.node.id"  @click="flyToMarker(tumulus.node.coords, tumulus.node.id)">{{tumulus.node.title}} - {{tumulus.node.location}}</li>
+            <li class="card" v-for="tumulus in searchResults" :key="tumulus.node.id"  @click="flyToMarker(tumulus.node.coords)">{{tumulus.node.title}} - {{tumulus.node.location}}</li>
           </ul>
         </div>
         <div class="text-body no-results" v-else>
@@ -36,6 +38,7 @@
 </template>
 
 <script>
+import axios from 'axios'
 let L = {}
 let Vue2Leaflet = {}
 
@@ -53,7 +56,8 @@ export default {
     LTooltip: Vue2Leaflet.LTooltip,
     LIcon: Vue2Leaflet.LIcon,
     LPopup:  Vue2Leaflet.LPopup,
-    LControlZoom: Vue2Leaflet.LControlZoom
+    LControlZoom: Vue2Leaflet.LControlZoom,
+    latLngBounds: L.latLngBounds
   },
   data () {
     return {
@@ -83,7 +87,7 @@ export default {
   computed: {
     searchResults() {
       return this.$page.allTumuli.edges.filter(tumulus => {
-        return tumulus.node.title.toLowerCase().includes(this.search.toLowerCase().trim())
+        return tumulus.node.location.toLowerCase().includes(this.search.toLowerCase().trim())
       })
     }
   },
@@ -100,9 +104,35 @@ export default {
     setImage(image) {
         this.image = image
     },
-    flyToMarker(coords, id) {
+    flyToMarker(coords) {
       this.$refs.map.mapObject.flyTo(coords, 15)
     },
+    async flyToLocation(search){
+        event.preventDefault()
+
+      try {
+      const data = await axios.get(
+        `https://nominatim.openstreetmap.org/search?q=` + search + `&format=json`
+      )
+
+        var bounds = L.latLngBounds([
+          [data.data[0].boundingbox[1], data.data[0].boundingbox[2]],
+          [data.data[0].boundingbox[0], data.data[0].boundingbox[3]]
+        ])
+      } 
+      catch (error) {
+        console.log(error)
+      }
+      this.$refs.map.fitBounds(bounds)
+    },
+    scrollToBottom() {
+      const el = this.$refs.scrollToMe;
+
+      if (el) {
+        // Use el.scrollIntoView() to instantly scroll to the element
+        el.scrollIntoView({behavior: 'smooth'});
+      }
+    }
   }
 };
 </script>
