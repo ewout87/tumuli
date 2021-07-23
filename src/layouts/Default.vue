@@ -1,6 +1,6 @@
 <template>
   <div class="layout">
-    <nav class="navbar">
+    <div class="navbar">
         <div class="logo">
           <g-link class="nav__link" to="/">
             <g-image src="~/assets/images/icon.png" alt="Logo" width="50" height="50"/>
@@ -9,7 +9,13 @@
             <p>Bezoek onze<br><strong>Tumuli</strong></p>
           </div>
         </div>
-      </nav>
+        <nav>
+            <ul class="menu">
+              <li class="menu-item"><g-link class="menu-link" to="/about/">About us</g-link></li>
+              <li class="menu-item"><a></a></li>
+            </ul>
+        </nav>
+      </div>
       <slot></slot>
   </div>
 </template>

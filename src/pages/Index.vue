@@ -20,13 +20,14 @@
         <div class="text-header">
           <form>
             <input type="text" name="search" id="search" placeholder="Plaatsnaam..." v-model="search"> 
-            <button href="" @click="flyToLocation(search)">Zoek</button>
+            <button href="" @click="goToLocation(search)">Zoek</button>
           </form>
         </div>
         <div class="text-body results" v-if="searchResults.length > 0">
-          <ul>
-            <li class="card" v-for="tumulus in searchResults" :key="tumulus.node.id"  @click="flyToMarker(tumulus.node.coords)">{{tumulus.node.title}} - {{tumulus.node.location}}</li>
-          </ul>
+            <div class="card" v-for="tumulus in searchResults" :key="tumulus.node.id"  @click="flyToMarker(tumulus.node.coords)">
+              <h3>{{tumulus.node.title}}</h3>
+              <p>{{tumulus.node.location}}</p>
+            </div>
         </div>
         <div class="text-body no-results" v-else>
           <p>Geen tumuli gevonden op deze locatie.</p>
@@ -110,7 +111,7 @@ export default {
     flyToMarker(coords) {
       this.$refs.map.mapObject.flyTo(coords, 15)
     },
-    async flyToLocation(search){
+    async goToLocation(search){
         event.preventDefault()
 
       try {
@@ -129,10 +130,6 @@ export default {
         //       ids.push(tumulus.node.id)
         //     }
         // }
-
-        // return this.$page.allTumuli.edges.filter(tumulus => {
-        //   return tumulus.node.id.includes()
-        // })
 
         var bounds = L.latLngBounds([
           [data.data[0].boundingbox[1], data.data[0].boundingbox[2]],
