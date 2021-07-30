@@ -9,16 +9,28 @@
             <p>Bezoek onze<br><strong>Tumuli</strong></p>
           </div>
         </div>
-        <nav>
-            <ul class="menu">
-              <li class="menu-item"><g-link class="menu-link" to="/about/">About us</g-link></li>
-              <li class="menu-item"><a></a></li>
-            </ul>
-        </nav>
+        <ul class="menu">
+          <li class="menu-item"><g-link class="menu-link" to="/about/">About us</g-link></li>
+        </ul>
+        <Burger></Burger>
       </div>
+      <Sidebar></Sidebar>
       <slot></slot>
   </div>
 </template>
+
+<script>
+import Burger from '~/components/Burger.vue';
+import Sidebar from '~/components/Sidebar.vue'
+
+export default {
+ name: 'app',
+ components: {
+   Burger,
+   Sidebar
+ }
+}
+</script>
 
 <static-query>
 query {
@@ -28,3 +40,76 @@ query {
 }
 </static-query>
 
+<style>
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css');
+@import url('https://fonts.googleapis.com/css2?family=Jost&family=Open+Sans&family=Roboto:wght@700&display=swap');
+
+  body {
+    font-family: 'Jost', Sans-serif;
+    margin:0;
+    padding:0;
+    line-height: 1.2rem;
+    color: rgba(0,0,0,0.8);
+  }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-flow: row wrap;
+      background: #add19e;
+      padding: 1rem 0;
+      height: 4rem;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 99;
+      width: 100%;
+    }
+
+    .logo {
+        display: flex;
+        flex: row wrap;
+        text-align: center;
+        align-self: center;
+        margin-left: 1rem;
+    }
+
+    .sitename {
+        font-family: 'Roboto', sans-serif;
+        text-transform: uppercase;
+        font-weight: bolder;
+        text-align: center;
+        line-height: 1.5rem;
+    }
+      
+    .sitename p {
+        margin: 0;
+        color: #fff;
+        letter-spacing: 2px;
+    }
+      
+    .sitename strong {
+        font-size: 2rem;
+        line-height: 1.5rem;
+    }
+
+    .menu {
+        display: flex; 
+        margin-right: 1rem;
+    }
+
+    .menu-item {
+        list-style: none;
+    }
+
+    .menu-link {
+        text-decoration: none;
+        color: #fff;
+        transform: uppercase;
+        font-size: 1.2rem;
+        letter-spacing: 2px;
+    }
+
+
+</style>

@@ -4,7 +4,6 @@
 
 // Changes here require a server restart.
 // To restart press CTRL + C in terminal and run `gridsome develop`
-const axios = require('axios')
 const fs = require('fs')
 const yaml = require('js-yaml')
 
@@ -19,24 +18,6 @@ module.exports = function (api) {
   api.createPages(({ createPage }) => {
     // Use the Pages API here: https://gridsome.org/docs/pages-api/
   })
-
-  // api.loadSource(async actions => {
-  //   const { data } = await axios.get(`https://www.wikitable2json.com/api/Gallo-Romeinse_tumuli_in_Belgi%C3%AB?lang=nl`)
-    
-  //   const collection = actions.addCollection({
-  //     typeName: 'Tumuli'
-  //   })
-    
-  //   const tumuli = data[0]
-
-  //     for (const tumulus of tumuli.data) {
-  //       collection.addNode({
-  //         id: tumulus[0],
-  //         title: tumulus[4],
-  //         coords: coords
-  //       })
-  //   }
-  // })
 
   api.loadSource(async actions => {
     const collection = actions.addCollection({
