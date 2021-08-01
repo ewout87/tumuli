@@ -9,9 +9,6 @@
             <p>Bezoek onze<br><strong>Tumuli</strong></p>
           </div>
         </div>
-        <ul class="menu">
-          <li class="menu-item"><g-link class="menu-link" to="/about/">About us</g-link></li>
-        </ul>
         <Burger></Burger>
       </div>
       <Sidebar></Sidebar>

@@ -25,7 +25,7 @@ module.exports = function (api) {
     })
 
     for (const tumulus of tumuli.data) {
-      var latln = tumulus[6].split(',')
+      var latln = tumulus[7].split(',')
 
       if(latln.length > 1){
         var coords = []
@@ -42,9 +42,10 @@ module.exports = function (api) {
         collection.addNode({
           id: tumulus[0],
           title: tumulus[4],
-          image: tumulus[8],
+          image: tumulus[9],
           coords: coords,
-          location: tumulus[5]
+          location: tumulus[5],
+          province: tumulus[6]
         })
       }
     }

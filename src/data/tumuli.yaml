@@ -6,6 +6,7 @@ data:
   - '1'
   - Tumulus van Trou de Billemont
   - Antoing
+  - Henegouwen
   - 50° 34' 15" NB, 3° 27' 41" OL
   - ''
   - Tumulus_van_Trou_de_Billemont.jpg
@@ -15,6 +16,7 @@ data:
   - '1'
   - Tumulus van Givry
   - Quévy
+  - Henegouwen
   - 50° 21' 56" NB, 4° 1' 42" OL
   - ''
   - 'NA'
@@ -24,6 +26,7 @@ data:
   - '2'
   - Tumuli van het Zoniënwoud
   - Watermaal-Bosvoorde
+  - Brussel
   - 50° 47' 16" NB, 4° 24' 21" OL
   - ''
   - Tumuli_van_het_Zonienwoud.jpg
@@ -33,6 +36,7 @@ data:
   - '1'
   - Tumulus van Marcinelle 
   - Charleroi
+  - Henegouwen
   - 50° 23' 18" NB, 4° 25' 39" OL
   - ''
   - Tumulus_van_Marcinelle.jpg
@@ -42,6 +46,7 @@ data:
   - '1'
   - Den Tomme
   - Huldenberg
+  - Vlaams-Brabant
   - 50° 44' 50" NB, 4° 38' 14" OL
   - ''
   - 'NA'
@@ -51,6 +56,7 @@ data:
   - '2'
   - Tumuli van Noirmont
   - Chastre
+  - Waals-Brabant
   - 50° 36' 8" NB, 4° 38' 35" OL
   - ''
   - Tumuli_van_Noirmont.jpg
@@ -60,6 +66,7 @@ data:
   - '1'
   - Tumulus van Tilly
   - Villers-la-Ville
+  - Waals-Brabant
   - 50° 34' 36" NB, 4° 33' 17" OL
   - ''
   - 'NA'
@@ -69,6 +76,7 @@ data:
   - '2'
   - Tumuli van Libersart
   - Walhain
+  - Waals-Brabant
   - 50° 39' 17" NB, 4° 43' 21" OL
   - ''
   - Tumuli_van_Libersart.jpg
@@ -78,6 +86,7 @@ data:
   - '1'
   - Tumulus van Glimes
   - Incourt
+  - Waals-Brabant
   - 50° 40' 36" NB, 4° 49' 58" OL
   - '1971'
   - Tumulus_van_Glimes.jpg
@@ -87,6 +96,7 @@ data:
   - '1'
   - Tumulus van Hottomont
   - Ramillies
+  - Waals-Brabant
   - 50° 37' 22" NB, 4° 53' 28" OL
   - ''
   - Tumulus_van_Hottomont.jpg
@@ -96,6 +106,7 @@ data:
   - '1'
   - Tumulus van de zes broers
   - Éghezée
+  - Namen
   - 50° 33' 31" NB, 4° 51' 56" OL
   - ''
   - Tumulus_van_de_zes_broers.jpg
@@ -105,6 +116,7 @@ data:
   - '3'
   - Drie Tommen
   - Tienen
+  - Vlaams-Brabant
   - 50° 47' 59" NB, 4° 57' 30" OL
   - ''
   - Drie_Tommen.jpg
@@ -114,6 +126,7 @@ data:
   - '1'
   - Tumulus van Piétrain
   - Geldenaken
+  - Waals-Brabant
   - 50° 42' 55" NB, 4° 55' 17" OL
   - ''
   - Tumulus_van_Pietrain.jpg
@@ -123,6 +136,7 @@ data:
   - '1'
   - Tumulus van Middelwinden
   - Landen
+  - Vlaams-Brabant
   - 50° 45' 42" NB, 5° 2' 37" OL
   - ''
   - Tumulus_van_Middelwinden.jpg
@@ -132,6 +146,7 @@ data:
   - '1'
   - Tumulus van Betz
   - Landen
+  - Vlaams-Brabant
   - 50° 44' 29" NB, 5° 6' 5" OL
   - ''
   - Tumulus_van_Betz.jpg
@@ -141,6 +156,7 @@ data:
   - '1'
   - Plattetombe
   - Landen
+  - Vlaams-Brabant
   - 50° 43' 54" NB, 5° 2' 55" OL
   - ''
   - Tumulus_van_Waasmont.jpg
@@ -150,6 +166,7 @@ data:
   - '1'
   - Tumulus van Avernas
   - Hannuit
+  - Luik
   - 50° 42' 5" NB, 5° 4' 17" OL
   - 29 maart 1976
   - Tumulus_van_Avernas.jpg
@@ -159,6 +176,7 @@ data:
   - '2'
   - Tumuli van het Bos van de Tombes/Tumuli van Mirteaux
   - Hannuit
+  - Luik
   - 50° 38' 18" NB, 4° 59' 48" OL
   - ''
   - Tumuli_de_Mirteaux.jpg
@@ -168,6 +186,7 @@ data:
   - '2'
   - Tumuli du Soleil
   - Wasseiges
+  - Luik
   - 50° 38' 10" NB, 5° 2' 1" OL
   - ''
   - Tumuli_du_Soleil.jpg
@@ -177,6 +196,7 @@ data:
   - '1'
   - Tombe de l'Empereur
   - Hannuit
+  - Luik
   - 50° 38' 17" NB, 5° 5' 7" OL
   - ''
   - Tumulus_de_l'Empereur.jpg
@@ -186,6 +206,7 @@ data:
   - '1'
   - Tumulus van Avennes
   - Braives
+  - Luik
   - 50° 38' 4" NB, 5° 7' 41" OL
   - ''
   - Tumulus_van_Avennes.jpg
@@ -195,6 +216,7 @@ data:
   - '1'
   - Tumulus van Hanret
   - Éghezée
+  - Namen
   - 50° 34' 20" NB, 4° 55' 17" OL
   - ''
   - Tumulus_van_Hanret.jpg
@@ -204,6 +226,7 @@ data:
   - '3'
   - Tumuli van Séron
   - Fernelmont
+  - Namenn
   - 50° 35' 38" NB, 5° 0' 30" OL
   - ''
   - Tumuli_van_Seron.jpg
@@ -213,6 +236,7 @@ data:
   - '1'
   - Tumulus van Vissoul
   - Burdinne
+  - Luik
   - 50° 35' 52" NB, 5° 7' 51" OL
   - ''
   - Tumulus_van_Vissoul.jpg
@@ -222,6 +246,7 @@ data:
   - '2'
   - Twee Tommen
   - Gingelom
+  - Limburg
   - 50° 42' 58" NB, 5° 9' 57" OL
   - ''
   - Twee_Tommen.jpg
@@ -231,6 +256,7 @@ data:
   - '3'
   - Drie Tommen
   - Gingelom
+  - Limburg
   - 50° 42' 35" NB, 5° 9' 40" OL
   - ''
   - Drie_Tommen_Gingelom.jpg
@@ -240,6 +266,7 @@ data:
   - '1'
   - Tumulus van Liek
   - Borgworm
+  - Luik
   - 50° 42' 57" NB, 5° 16' 56" OL
   - ''
   - Tumulus_van_Oleye.jpg
@@ -249,6 +276,7 @@ data:
   - '1'
   - Tumulus van Blehen
   - Hannuit
+  - Luik
   - 50° 40' 7" NB, 5° 7' 49" OL
   - ''
   - Tumulus_van_Blehen.jpg
@@ -258,6 +286,7 @@ data:
   - '5'
   - Tumuli van Omal
   - Geer
+  - Luik
   - 50° 39' 4" NB, 5° 11' 55" OL
   - ''
   - Tumuli_van_Omal.jpg
@@ -267,6 +296,7 @@ data:
   - '1'
   - Tombe van Yve
   - Braives
+  - Luik
   - 50° 36' 21" NB, 5° 8' 31" OL
   - ''
   - Tombe_van_Yve.jpg
@@ -276,6 +306,7 @@ data:
   - '1'
   - Butte Saint-Sauveur
   - Braives
+  - Luik
   - 50° 36' 12" NB, 5° 11' 17" OL
   - ''
   - Butte_Saint-Sauveur.jpg
@@ -285,6 +316,7 @@ data:
   - '1'
   - Tumulus van Vaux
   - Villers-le-Bouillet
+  - Luik
   - 50° 37' 15" NB, 5° 13' 49" OL
   - ''
   - Tumulus_van_Vaux.jpg
@@ -294,6 +326,7 @@ data:
   - '1'
   - Tumulus van Borgworm
   - Borgworm
+  - Luik
   - 50° 41' 17" NB, 5° 15' 27" OL
   - '1979'
   - Tumulus_van_Borgworm.jpg
@@ -303,6 +336,7 @@ data:
   - '2'
   - Tumuli van het Bos van de Tombes
   - Borgworm
+  - Luik
   - 50° 40' 43" NB, 5° 14' 26" OL
   - ''
   - Tumuli_van_het_Bois_des_Tombes.jpg
@@ -312,6 +346,7 @@ data:
   - '1'
   - Tumulus van Saives
   - Faimes
+  - Luik
   - 50° 39' 31" NB, 5° 14' 21" OL
   - ''
   - Tumulus_van_Saives.jpg
@@ -321,6 +356,7 @@ data:
   - '1'
   - Tumulus van Aineffe
   - Faimes
+  - Luik
   - 50° 37' 23" NB, 5° 15' 40" OL
   - ''
   - Tumulus_van_Aineffe.jpg
@@ -330,6 +366,7 @@ data:
   - '1'
   - Tumulus van Verlaine
   - Verlaine
+  - Luik
   - 50° 36' 51" NB, 5° 18' 23" OL
   - ''
   - Tumulus_van_Verlaine.jpg
@@ -339,6 +376,7 @@ data:
   - '1'
   - Tumulus van Oultremont
   - Villers-le-Bouillet
+  - Luik
   - 50° 35' 2" NB, 5° 13' 11" OL
   - ''
   - Tumulus_van_Oultremont.jpg
@@ -348,6 +386,7 @@ data:
   - '1'
   - Tumulus van Yernawe
   - Saint-Georges-sur-Meuse
+  - Luik
   - 50° 35' 40" NB, 5° 20' 26" OL
   - ''
   - Tumulus_van_Yernawe.jpg
@@ -357,6 +396,7 @@ data:
   - '1'
   - Tumulus van Ramelot
   - Tinlot
+  - Luik
   - 50° 27' 37" NB, 5° 20' 36" OL
   - ''
   - Tumulus_van_Ramelot.jpg
@@ -366,6 +406,7 @@ data:
   - '1'
   - Tumulus van Havelange
   - Havelange/Clavier
+  - Luik
   - 50° 23' 26" NB, 5° 17' 17" OL
   - ''
   - Tumulus_van_Havelange.jpg
@@ -375,6 +416,7 @@ data:
   - '1'
   - Tumulus van Vechmaal
   - Heers
+  - Limburg
   - 50° 45' 25" NB, 5° 21' 7" OL
   - ''
   - Tumulus_van_Vechmaal.jpg
@@ -384,6 +426,7 @@ data:
   - '1'
   - Tumulus van Koninksem (Romeinse Kassei)
   - Tongeren
+  - Limburg
   - 50° 46' 11" NB, 5° 26' 21" OL
   - ''
   - Tumulus_Koninksem_Romeinse_Kassei.jpg
@@ -393,6 +436,7 @@ data:
   - '1'
   - Tumulus van Hodeige
   - Remicourt/Oerle
+  - Luik
   - 50° 42' 2" NB, 5° 21' 52" OL
   - ''
   - Tumulus_van_Hoedeige.jpg
@@ -402,6 +446,7 @@ data:
   - '1'
   - Herstappeltombe
   - Tongeren
+  - Limburg
   - 50° 43' 25" NB, 5° 24' 58" OL
   - ''
   - Herstappeltombe.jpg
@@ -411,6 +456,7 @@ data:
   - '1'
   - Tumulus van Koninksem (Paardsweidestraat)
   - Tongeren
+  - Limburg
   - 50° 46' 8" NB, 5° 26' 40" OL
   - ''
   - Tumulus_Koninksem_Paardsweidestraat.jpg
@@ -420,6 +466,7 @@ data:
   - '1'
   - Tumulus van Othée
   - Awans
+  - Luik
   - 50° 43' 24" NB, 5° 27' 34" OL
   - ''
   - Tumulus_van_Othee.jpg
@@ -429,6 +476,7 @@ data:
   - '1'
   - Tumulus van Noville
   - Fexhe-le-Haut-Clocher/Remicourt
+  - Luik
   - 50° 40' 1" NB, 5° 22' 51" OL
   - ''
   - Tumulus_van_Noville.jpg
@@ -438,6 +486,7 @@ data:
   - '1'
   - Tumulus van Xhendremael
   - Ans
+  - Luik
   - 50° 41' 50" NB, 5° 28' 41" OL
   - 27 mei 2009
   - Tumulus_van_Xhendremael.jpg
@@ -447,6 +496,7 @@ data:
   - '1'
   - Tumulus van Schinkelsknopf
   - Sankt Vith
+  - Luik
   - 50° 15' 22" NB, 6° 6' 55" OL
   - 25 januari 2007
   - Tumulus_van_Schinkelsknopf.jpg
@@ -456,6 +506,7 @@ data:
   - '1'
   - Tumulus van Hochtumsknopf
   - Burg-Reuland
+  - Luik
   - 50° 13' 54" NB, 6° 3' 29" OL
   - 6 juli 1998
   - Tumulus_van_Hochtumsknopf.jpg
@@ -465,6 +516,7 @@ data:
   - '1'
   - Avernassetombe
   - Gingelom
+  - Limburg
   - 50° 42' 21" NB, 5° 7' 47" OL
   - ''
   - Avernassetombe.jpg
@@ -474,6 +526,7 @@ data:
   - '1'
   - Tumulus van Herderen (Vlijtingerweg)
   - Riemst
+  - Limburg
   - 50° 48' 24" NB, 5° 33' 16" OL
   - '1980'
   - Tumulus_van_Herderen_Grootbos.jpg
@@ -483,6 +536,7 @@ data:
   - '1'
   - Tumulus van Herderen (De La Brassinnestraat)
   - Riemst
+  - Limburg
   - 50° 48' 20" NB, 5° 34' 9" OL
   - '1976'
   - Tumulus_van_Herderen.jpg
@@ -492,6 +546,7 @@ data:
   - '1'
   - Tumulus van Genoelselderen
   - Riemst
+  - Limburg
   - 50° 48' 13" NB, 5° 31' 41" OL
   - ''
   - Tumulus_van_Genoelselderen.jpg
@@ -501,6 +556,7 @@ data:
   - '1'
   - Graf van Gutschoven (Verloren Kost)
   - Heers
+  - Limburg
   - 50° 46' 12" NB, 5° 19' 57" OL
   - ''
   - Tumulus_van_Gutschoven.jpg
@@ -510,6 +566,7 @@ data:
   - '1'
   - Tumulus van Emael
   - Bitsingen
+  - Luik
   - 50° 47' 23" NB, 5° 40' 32" OL
   - ''
   - Tumulus_van_Emael.jpg
@@ -519,6 +576,7 @@ data:
   - '1'
   - Tumulus van Wouteringen
   - Oerle
+  - Luik
   - 50° 44' 15" NB, 5° 22' 5" OL
   - ''
   - Tumulus_van_Otrange.jpg
@@ -528,6 +586,7 @@ data:
   - '2'
   - Tumuli van Bonlez
   - Chaumont-Gistoux
+  - Waals-Brabant
   - 50° 41' 50" NB, 4° 42' 26" OL
   - ''
   - 'NA'
@@ -537,6 +596,18 @@ data:
   - '1'
   - Tumulus van Brustem
   - Sint-Truiden
+  - Limburg
   - 50° 47' 33" NB, 5° 14' 33" OL
   - '1979'
   - Tumulus_van_Brustem.jpg
+- - '64'
+  - ''
+  - ''
+  - '1'
+  - Tumulus aan de Beukenberg
+  - Tongeren
+  - Limburg
+  - 50° 46' 39" NB, 5° 26' 25" OL
+  - ''
+  - 'NA'
+

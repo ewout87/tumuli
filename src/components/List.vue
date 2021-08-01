@@ -10,7 +10,7 @@
         <div class="text-body results" v-if="searchResults.length > 0">
             <div class="card" v-for="tumulus in searchResults" :key="tumulus.node.id"  @click="centerUpdate(tumulus.node.coords)">
               <h3>{{tumulus.node.title}}</h3>
-              <p>{{tumulus.node.location}}</p>
+              <p>{{tumulus.node.location}} - {{tumulus.node.province}}</p>
             </div>
         </div>
         <div class="text-body no-results" v-else>
@@ -35,7 +35,15 @@ export default {
   computed: {
     searchResults() {
       return this.$page.allTumuli.edges.filter(tumulus => {
-        return tumulus.node.title.toLowerCase().includes(this.search.toLowerCase().trim())
+        if(tumulus.node.title.toLowerCase().includes(this.search.toLowerCase().trim())) {
+           return tumulus.node.title.toLowerCase().includes(this.search.toLowerCase().trim())
+        }
+        else if(tumulus.node.location.toLowerCase().includes(this.search.toLowerCase().trim())) {
+          return tumulus.node.location.toLowerCase().includes(this.search.toLowerCase().trim())
+        }
+        else {
+          return tumulus.node.province.toLowerCase().includes(this.search.toLowerCase().trim())
+        }
       })
     }
   },
@@ -44,7 +52,6 @@ export default {
       mutations.centerUpdate(coords)
     },
     async boundsUpdate(search){
-
       try {
       const data = await axios.get(
         `https://nominatim.openstreetmap.org/search?q=` + search + ` Belgie&format=json`
@@ -60,42 +67,10 @@ export default {
       catch (error) {
         console.log(error)
       }
-    },
-    calculateDistance(coords1, coords2){
-      const R = 6371e3; // metres
-      const φ1 = coords1[1] * Math.PI/180; // φ, λ in radians
-      const φ2 = coords2[1] * Math.PI/180;
-      const Δφ = (coords2[1]-coords1[1]) * Math.PI/180;
-      const Δλ = (coords2[2]-coords2[2]) * Math.PI/180;
-
-      const a = Math.sin(Δφ/2) * Math.sin(Δφ/2) +
-                Math.cos(φ1) * Math.cos(φ2) *
-                Math.sin(Δλ/2) * Math.sin(Δλ/2);
-      const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
-
-      const d = R * c; // in metres
-
-      return d
     }
   }
 };
 </script>
-
-<page-query>
-query {
-  allTumuli(sortBy: "title", order: ASC) {
-    edges {
-      node {
-        id
-        title
-        coords
-        image
-        location
-      }
-    }
-  }
-}
-</page-query>
 
 <style scoped>
 .button {

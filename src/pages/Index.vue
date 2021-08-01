@@ -3,16 +3,17 @@
     <ClientOnly>    
       <l-map id="map" ref="map" :zoom="zoom" :center="center" :bounds="bounds" :options="{zoomControl: false}">
         <l-tile-layer :url="url"></l-tile-layer>
-        <l-marker v-for="edge in $page.allTumuli.edges" :key="edge.node.id" :lat-lng="edge.node.coords" :icon="icon" @click="flyToMarker(edge.node.coords), setImage(edge.node.image)"> 
-          <l-tooltip :content="edge.node.title"></l-tooltip>
-          <l-popup>
-            <h3>{{ edge.node.title }}</h3>
-            <div :class="{'no-image':(edge.node.image === 'NA')}">
-              <g-image :src="require(`!!assets-loader?width=250&height=250!@images/${image}`)" :alt="edge.node.title" fit="contain"/>
-            </div>
-            
-          </l-popup>
-        </l-marker>
+        <l-marker-cluster>
+          <l-marker v-for="edge in $page.allTumuli.edges" :key="edge.node.id" :lat-lng="edge.node.coords" :icon="icon" @click="flyToMarker(edge.node.coords), setImage(edge.node.image)"> 
+            <l-tooltip :content="edge.node.title"></l-tooltip>
+            <l-popup>
+              <h3>{{ edge.node.title }}</h3>
+              <div :class="{'no-image':(edge.node.image === 'NA')}">
+                <g-image :src="require(`!!assets-loader?width=250&height=250!@images/${image}`)" :alt="edge.node.title" fit="contain"/>
+              </div>
+            </l-popup>
+          </l-marker>
+        </l-marker-cluster>
         <l-control-zoom position="bottomright"></l-control-zoom>
       </l-map>
     </ClientOnly>
@@ -23,10 +24,12 @@
 import { store, mutations } from '@/store.js'
 let L = {}
 let Vue2Leaflet = {}
+let Vue2LeafletMarkerCluster = {}
 
 if (process.isClient) {
-  L = require("leaflet");
-  Vue2Leaflet = require("vue2-leaflet");
+  L = require("leaflet")
+  Vue2Leaflet = require("vue2-leaflet")
+  Vue2LeafletMarkerCluster = require("vue2-leaflet-markercluster")
 }
 
 export default {
@@ -39,7 +42,8 @@ export default {
     LIcon: Vue2Leaflet.LIcon,
     LPopup:  Vue2Leaflet.LPopup,
     LControlZoom: Vue2Leaflet.LControlZoom,
-    latLngBounds: L.latLngBounds
+    latLngBounds: L.latLngBounds,
+    LMarkerCluster: Vue2LeafletMarkerCluster
   },
   data () {
     return {
@@ -89,7 +93,7 @@ export default {
     },
     flyToMarker(coords) {
       this.$refs.map.mapObject.flyTo(coords, 15)
-    }
+    },
   }
 };
 </script>
@@ -104,6 +108,7 @@ query {
         coords
         image
         location
+        province
       }
     }
   }
