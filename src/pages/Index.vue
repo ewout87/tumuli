@@ -4,7 +4,7 @@
       <l-map id="map" ref="map" :zoom="zoom" :center="center" :bounds="bounds" :options="{zoomControl: false}">
         <l-tile-layer :url="url"></l-tile-layer>
         <l-marker-cluster>
-          <l-marker v-for="edge in $page.allTumuli.edges" :key="edge.node.id" :lat-lng="edge.node.coords" :icon="icon" @click="flyToMarker(edge.node.coords), setImage(edge.node.image)"> 
+          <l-marker v-for="edge in $page.tumuli.edges" :key="edge.node.id" :lat-lng="edge.node.coords" :icon="icon" @click="flyToMarker(edge.node.coords), setImage(edge.node.image)"> 
             <l-tooltip :content="edge.node.title"></l-tooltip>
             <l-popup>
               <h3>{{ edge.node.title }}</h3>
@@ -15,6 +15,7 @@
           </l-marker>
         </l-marker-cluster>
         <l-control-zoom position="bottomright"></l-control-zoom>
+        <l-polyline v-for="polyline in polylines" :key="polyline" :lat-lngs="polyline" :color="color"></l-polyline>
       </l-map>
     </ClientOnly>
   </Layout>
@@ -22,6 +23,8 @@
 
 <script>
 import { store, mutations } from '@/store.js'
+import polylines from '@/data/polylines.json'
+
 let L = {}
 let Vue2Leaflet = {}
 let Vue2LeafletMarkerCluster = {}
@@ -40,7 +43,8 @@ export default {
     LMarker: Vue2Leaflet.LMarker,
     LTooltip: Vue2Leaflet.LTooltip,
     LIcon: Vue2Leaflet.LIcon,
-    LPopup:  Vue2Leaflet.LPopup,
+    LPopup: Vue2Leaflet.LPopup,
+    LPolyline: Vue2Leaflet.LPolyline,
     LControlZoom: Vue2Leaflet.LControlZoom,
     latLngBounds: L.latLngBounds,
     LMarkerCluster: Vue2LeafletMarkerCluster
@@ -52,6 +56,8 @@ export default {
       popup: null,
       staticAnchor: [16, 32],
       iconSize: 64,
+      color: '#734a08',
+      polylines,
       tumuli: null,
       image: 'background.png',
       imageClass: 'no-image',
@@ -69,14 +75,14 @@ export default {
       return store.bounds
     }
   },
-  mounted () {
+  async mounted () {
       if (process.isClient) {
         this.icon =  L.icon({
           iconUrl: require(`@images/icon.png`),
           iconSize: [32, 32],
           iconAnchor: [16, 32]
         });
-      } 
+      }
   },
   methods: {
     zoomUpdated (zoom) {
@@ -100,7 +106,7 @@ export default {
 
 <page-query>
 query {
-  allTumuli(sortBy: "title", order: ASC) {
+  tumuli: allTumuli(sortBy: "title", order: ASC) {
     edges {
       node {
         id

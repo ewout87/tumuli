@@ -6,9 +6,11 @@
 // To restart press CTRL + C in terminal and run `gridsome develop`
 const fs = require('fs')
 const yaml = require('js-yaml')
+const axios = require('axios')
 
 const fileContents = fs.readFileSync('./src/data/tumuli.yaml', 'utf8')
-const tumuli = yaml.load(fileContents)
+const viaData = require('./src/data/viaBelgica.json');
+const tumuliData = yaml.load(fileContents)
 
 module.exports = function (api) {
   api.loadSource(({ addCollection }) => {
@@ -20,17 +22,17 @@ module.exports = function (api) {
   })
 
   api.loadSource(async actions => {
-    const collection = actions.addCollection({
-      typeName: 'tumuli'
+    const tumuli = actions.addCollection({
+      typeName: 'Tumuli'
     })
 
-    for (const tumulus of tumuli.data) {
-      var latln = tumulus[7].split(',')
+    for (const tumulus of tumuliData.data) {
+      var latlng = tumulus[7].split(',')
 
-      if(latln.length > 1){
+      if(latlng.length > 1){
         var coords = []
   
-        for (var dms of latln) {
+        for (var dms of latlng) {
           var dms = dms.split(/°|'|"/)
           var degrees = parseFloat(dms[0])
           var minutes = parseFloat(dms[1]/60)
@@ -39,7 +41,7 @@ module.exports = function (api) {
           coords.push(dd)
         }
 
-        collection.addNode({
+        tumuli.addNode({
           id: tumulus[0],
           title: tumulus[4],
           image: tumulus[9],

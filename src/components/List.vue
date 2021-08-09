@@ -34,7 +34,7 @@ export default {
   },
   computed: {
     searchResults() {
-      return this.$page.allTumuli.edges.filter(tumulus => {
+      return this.$page.tumuli.edges.filter(tumulus => {
         if(tumulus.node.title.toLowerCase().includes(this.search.toLowerCase().trim())) {
            return tumulus.node.title.toLowerCase().includes(this.search.toLowerCase().trim())
         }
