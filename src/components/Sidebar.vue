@@ -2,22 +2,22 @@
     <div class="sidebar">
         <div class="sidebar-backdrop" @click="closeSidebarPanel" v-if="isPanelOpen"></div>
         <transition name="slide">
-            <div v-if="isPanelOpen"
-                 class="sidebar-panel">
+            <div v-if="isPanelOpen" class="sidebar-panel">
                 <List></List>
+                <social></social>
             </div>
         </transition>
     </div>
 </template>
 
 <script>
-import List from '~/components/List.vue';
+import List from '~/components/List.vue'
 import { store, mutations } from '@/store.js'
 
 export default {
     name: 'app',
-        components: {
-            List
+    components: {
+        List
     },
     methods: {
         closeSidebarPanel: mutations.toggleNav

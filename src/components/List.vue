@@ -18,6 +18,7 @@
              <p>Geen tumuli gevonden op deze locatie.</p>
           </div>
         </div>
+        <social></social>
       </div>
     </div>
 </template>
@@ -25,12 +26,16 @@
 <script>
 import axios from 'axios'
 import { store, mutations } from '@/store.js'
+import Social from '~/components/Social.vue'
 
 export default {
   data () {
     return {
       search: '',
     };
+  },
+  components: {
+    Social
   },
   computed: {
     searchResults() {
@@ -103,7 +108,7 @@ export default {
 
 .text-body {
     overflow: scroll;
-    height: calc(100vh - 4rem);
+    height: calc(100vh - 12rem);
     color: #fff;
 }
 

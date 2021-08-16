@@ -4,12 +4,12 @@
       <l-map id="map" ref="map" :zoom="zoom" :center="center" :bounds="bounds" :options="{zoomControl: false}">
         <l-tile-layer :url="url"></l-tile-layer>
         <l-marker-cluster>
-          <l-marker v-for="edge in $page.tumuli.edges" :key="edge.node.id" :lat-lng="edge.node.coords" :icon="icon" @click="flyToMarker(edge.node.coords), setImage(edge.node.image)"> 
-            <l-tooltip :content="edge.node.title"></l-tooltip>
+          <l-marker v-for="tumulus in $page.tumuli.edges" :key="tumulus.node.id" :lat-lng="tumulus.node.coords" :icon="icon" @click="flyToMarker(tumulus.node.coords), setImage(tumulus.node.image)"> 
+            <l-tooltip :content="tumulus.node.title"></l-tooltip>
             <l-popup>
-              <h3>{{ edge.node.title }}</h3>
-              <div :class="{'no-image':(edge.node.image === 'NA')}">
-                <g-image :src="require(`!!assets-loader?width=250&height=250!@images/${image}`)" :alt="edge.node.title" fit="contain"/>
+              <h3>{{ tumulus.node.title }}</h3>
+              <div>
+                <g-image :src="require(`!!assets-loader?width=250&height=250!@images/${image}`)" :alt="tumulus.node.title" fit="contain"/>
               </div>
             </l-popup>
           </l-marker>
@@ -56,7 +56,7 @@ export default {
       popup: null,
       staticAnchor: [16, 32],
       iconSize: 64,
-      color: '#734a08',
+      color: 'green',
       polylines,
       tumuli: null,
       image: 'background.png',
@@ -95,7 +95,7 @@ export default {
       this.bounds = bounds
     },
     setImage(image) {
-        this.image = image
+      this.image = image
     },
     flyToMarker(coords) {
       this.$refs.map.mapObject.flyTo(coords, 15)
@@ -120,6 +120,16 @@ query {
   }
 }
 </page-query>
+<static-query>
+  query {
+    metadata {
+      siteName
+      siteDescription
+      siteUrl
+    }
+  }
+</static-query>
+
 
 <style scoped>
 .no-image img {

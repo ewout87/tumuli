@@ -6,6 +6,8 @@
 
 module.exports = {
   siteName: 'Bezoek onze tumuli',
+  siteDescription: 'De oudste monumenten van België.',
+  siteUrl: process.env.DEPLOY_URL || 'https://tumuli.netlify.app',
   plugins: [],
   chainWebpack: config => {
     config.resolve.alias.set('@images', '@/assets/images')
