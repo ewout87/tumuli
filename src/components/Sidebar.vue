@@ -3,7 +3,7 @@
         <div class="sidebar-backdrop" @click="closeSidebarPanel" v-if="isPanelOpen"></div>
         <transition name="slide">
             <div v-if="isPanelOpen" class="sidebar-panel">
-                <List></List>
+                <Search></Search>
                 <social></social>
             </div>
         </transition>
@@ -11,13 +11,13 @@
 </template>
 
 <script>
-import List from '~/components/List.vue'
+import Search from '~/components/Search.vue'
 import { store, mutations } from '@/store.js'
 
 export default {
     name: 'app',
     components: {
-        List
+        Search
     },
     methods: {
         closeSidebarPanel: mutations.toggleNav

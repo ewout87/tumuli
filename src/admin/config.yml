@@ -6,13 +6,15 @@ media_folder: "static/uploads"
 public_folder: "/uploads"
 
 collections:
-  - name: "posts"
-    label: "Posts"
-    folder: "posts"
+  - name: "tumuli"
+    label: "Tumuli"
+    folder: "tumuli"
     create: true
     slug: "{{slug}}"
     fields:
       - {label: "Title", name: "title", widget: "string"}
-      - {label: "Excerpt", name: "excerpt", widget: "string"}
-      - {label: "Publish Date", name: "date", widget: "datetime"}
+      - {label: "Image", name: "image", widget: "image"}
+      - {label: "Coordinates", name: "coords", widget: "map"}
+      - {label: "Location", name: "location", widget: "string"}
+      - {label: "Province", name: "province", widget: "string"}
       - {label: "Body", name: "body", widget: "markdown"}
