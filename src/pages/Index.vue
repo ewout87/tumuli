@@ -120,16 +120,6 @@ query {
   }
 }
 </page-query>
-<static-query>
-  query {
-    metadata {
-      siteName
-      siteDescription
-      siteUrl
-    }
-  }
-</static-query>
-
 
 <style scoped>
 .no-image img {

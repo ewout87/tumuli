@@ -7,11 +7,17 @@
     "build": "gridsome build"
   },
   "dependencies": {
+    "@gridsome/source-filesystem": "^0.6.2",
+    "@gridsome/transformer-remark": "^0.6.4",
     "@popperjs/core": "^2.9.2",
     "axios": "^0.21.1",
     "gridsome": "^0.7.0",
+    "gridsome-plugin-gtm": "^0.1.1",
+    "gridsome-plugin-netlify-cms": "^1.0.9",
     "js-yaml": "^4.1.0",
+    "klaro-gridsome": "^1.0.3",
     "leaflet": "^1.7.1",
+    "netlify-cms": "^2.10.174",
     "vue2-leaflet": "^2.7.1",
     "vue2-leaflet-markercluster": "^3.1.0"
   },
