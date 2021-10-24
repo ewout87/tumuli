@@ -84,8 +84,8 @@ export default {
     const tumuli = this.$page.tumuli.edges
 
     tumuli.forEach(function getCoords(tumulus) {
-      var coordinates = JSON.parse(tumulus.node.coords).coordinates.reverse()
-      tumulus.node.coords = coordinates
+      var data = JSON.parse(tumulus.node.coords)
+      tumulus.node.coords = data.coordinates.reverse()
     })
 
     this.markers = tumuli
