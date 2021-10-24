@@ -14,7 +14,14 @@ collections:
     fields:
       - {label: "Title", name: "title", widget: "string"}
       - {label: "Image", name: "image", widget: "image"}
-      - {label: "Coordinates", name: "coords", widget: "map"}
+      - {label: "Coordinates", name: "coords", widget: "map", type: "Point"}
       - {label: "Location", name: "location", widget: "string"}
       - {label: "Province", name: "province", widget: "string"}
+  - name: "pages"
+    label: "Pages"
+    folder: "pages"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
       - {label: "Body", name: "body", widget: "markdown"}

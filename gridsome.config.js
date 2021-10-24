@@ -19,8 +19,11 @@ module.exports = {
     {
       use: '@gridsome/source-filesystem',
       options: {
-        path: 'posts/**/*.md',
-        typeName: 'Post'
+        path: 'tumuli/**/*.md',
+        typeName: 'Tumuli',
+        remark: {
+          plugins: []
+        }
       }
     },
     {

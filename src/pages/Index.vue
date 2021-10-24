@@ -4,13 +4,11 @@
       <l-map id="map" ref="map" :zoom="zoom" :center="center" :bounds="bounds" :options="{zoomControl: false}">
         <l-tile-layer :url="url"></l-tile-layer>
         <l-marker-cluster>
-          <l-marker v-for="tumulus in $page.tumuli.edges" :key="tumulus.node.id" :lat-lng="tumulus.node.coords" :icon="icon" @click="flyToMarker(tumulus.node.coords), setImage(tumulus.node.image)"> 
-            <l-tooltip :content="tumulus.node.title"></l-tooltip>
+          <l-marker v-for="marker in markers" :key="marker.node.id" :lat-lng="marker.node.coords" :icon="icon" @click="flyToMarker(marker.node.coords)"> 
+            <l-tooltip :content="marker.node.title"></l-tooltip>
             <l-popup>
-              <h3>{{ tumulus.node.title }}</h3>
-              <div>
-                <g-image :src="require(`!!assets-loader?width=250&height=250!@images/${image}`)" :alt="tumulus.node.title" fit="contain"/>
-              </div>
+              <h3>{{ marker.node.title }}</h3>
+              <img :src="marker.node.image" :alt="marker.node.image" width="250"/>
             </l-popup>
           </l-marker>
         </l-marker-cluster>
@@ -58,10 +56,8 @@ export default {
       iconSize: 64,
       color: 'green',
       polylines,
-      tumuli: null,
-      image: 'background.png',
-      imageClass: 'no-image',
       search: '',
+      markers: []
     };
   },
  computed: {
@@ -83,6 +79,16 @@ export default {
           iconAnchor: [16, 32]
         });
       }
+  },
+  created () {
+    const tumuli = this.$page.tumuli.edges
+
+    tumuli.forEach(function getCoords(tumulus) {
+      var coordinates = JSON.parse(tumulus.node.coords).coordinates.reverse()
+      tumulus.node.coords = coordinates
+    })
+
+    this.markers = tumuli
   },
   methods: {
     zoomUpdated (zoom) {
@@ -112,9 +118,9 @@ query {
         id
         title
         coords
-        image
         location
         province
+        image (width: 500, height: 200, quality: 90)
       }
     }
   }
