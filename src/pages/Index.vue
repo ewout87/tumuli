@@ -4,7 +4,7 @@
       <l-map id="map" ref="map" :zoom="zoom" :center="center" :bounds="bounds" :options="{zoomControl: false}">
         <l-tile-layer :url="url"></l-tile-layer>
         <l-marker-cluster>
-          <l-marker v-for="marker in markers" :key="marker.node.id" :lat-lng="marker.node.coords" :icon="icon" @click="flyToMarker(marker.node.coords)"> 
+          <l-marker v-for="marker in markers" :key="marker.node.id" :lat-lng="marker.node.coordinates" :icon="icon" @click="flyToMarker(marker.node.coordinates)"> 
             <l-tooltip :content="marker.node.title"></l-tooltip>
             <l-popup>
               <h3>{{ marker.node.title }}</h3>
@@ -15,6 +15,7 @@
         <l-control-zoom position="bottomright"></l-control-zoom>
         <l-polyline v-for="polyline in polylines" :key="polyline" :lat-lngs="polyline" :color="color"></l-polyline>
       </l-map>
+      {{markers}}
     </ClientOnly>
   </Layout>
 </template>
@@ -84,8 +85,7 @@ export default {
     const tumuli = this.$page.tumuli.edges
 
     tumuli.forEach(function getCoords(tumulus) {
-      var data = JSON.parse(tumulus.node.coords);
-      tumulus.node.coords = data.coordinates.reverse();
+      tumulus.node.coordinates = JSON.parse(tumulus.node.coordinates).reverse()
     })
 
     this.markers = tumuli
@@ -112,12 +112,12 @@ export default {
 
 <page-query>
 query {
-  tumuli: allTumuli(sortBy: "title", order: ASC) {
+  tumuli: allTumuli {
     edges {
       node {
         id
         title
-        coords
+        coordinates
         location
         province
         image (width: 500, height: 200, quality: 90)
