@@ -4,7 +4,7 @@
       <l-map id="map" ref="map" :zoom="zoom" :center="center" :bounds="bounds" :options="{zoomControl: false}">
         <l-tile-layer :url="url"></l-tile-layer>
         <l-marker-cluster>
-          <l-marker v-for="marker in markers" :key="marker.node.id" :lat-lng="marker.node.coordinates" :icon="icon" @click="flyToMarker(marker.node.coordinates)"> 
+          <l-marker v-for="marker in markers" :key="marker.node.id" :lat-lng="marker.node.coords" :icon="icon" @click="flyToMarker(marker.node.coords)"> 
             <l-tooltip :content="marker.node.title"></l-tooltip>
             <l-popup>
               <h3>{{ marker.node.title }}</h3>
@@ -15,7 +15,9 @@
         <l-control-zoom position="bottomright"></l-control-zoom>
         <l-polyline v-for="polyline in polylines" :key="polyline" :lat-lngs="polyline" :color="color"></l-polyline>
       </l-map>
-      {{markers}}
+          <div v-for="marker in markers" :key="marker.node.id" :lat-lng="marker.node.coords" :icon="icon"> 
+            {{ marker.node.coords }}
+          </div>
     </ClientOnly>
   </Layout>
 </template>
@@ -58,7 +60,8 @@ export default {
       color: 'green',
       polylines,
       search: '',
-      markers: []
+      markers: [],
+      console: console.log()
     };
   },
  computed: {
@@ -73,19 +76,19 @@ export default {
     }
   },
   async mounted () {
-      if (process.isClient) {
-        this.icon =  L.icon({
-          iconUrl: require(`@images/icon.png`),
-          iconSize: [32, 32],
-          iconAnchor: [16, 32]
-        });
-      }
-  },
-  created () {
+    if (process.isClient) {
+      this.icon =  L.icon({
+        iconUrl: require(`@images/icon.png`),
+        iconSize: [32, 32],
+        iconAnchor: [16, 32]
+      });
+    }
+
     const tumuli = this.$page.tumuli.edges
 
     tumuli.forEach(function getCoords(tumulus) {
-      tumulus.node.coordinates = JSON.parse(tumulus.node.coordinates).reverse()
+      var data = JSON.parse(tumulus.node.coords)
+      tumulus.node.coords = data.coordinates.reverse()
     })
 
     this.markers = tumuli
@@ -117,7 +120,7 @@ query {
       node {
         id
         title
-        coordinates
+        coords
         location
         province
         image (width: 500, height: 200, quality: 90)

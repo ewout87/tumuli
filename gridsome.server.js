@@ -21,18 +21,4 @@ module.exports = function (api) {
 
   api.loadSource(async actions => {
   })
-
-  api.loadSource(({ addSchemaResolvers }) => {
-    addSchemaResolvers({
-      Tumuli: {
-        coordinates: {
-          type: 'String',
-          resolve(obj) {
-            var data = JSON.parse(obj.coords).coordinates
-            return JSON.stringify(data)
-          }
-        }
-      }
-    })
-  })
 }
