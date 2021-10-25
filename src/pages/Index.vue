@@ -8,7 +8,6 @@
             <l-tooltip :content="marker.node.title"></l-tooltip>
             <l-popup>
               <h3>{{ marker.node.title }}</h3>
-              <img :src="marker.node.image" :alt="marker.node.image" width="250"/>
             </l-popup>
           </l-marker>
         </l-marker-cluster>
