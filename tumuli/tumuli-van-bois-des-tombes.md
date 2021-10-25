@@ -7,5 +7,6 @@ province: Luik
 accessibility: bos
 height: ≥10
 age: 2e eeuw
+number: 2
 ---
 Lorem ipsum
