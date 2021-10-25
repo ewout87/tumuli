@@ -25,9 +25,9 @@ collections:
         name: "height"
         widget: "select"
         options: ["<5", ">5 - <10", ">10"]
-      - {label: "Tijdperk", name: "age", widget: "string"}  
-      - {label: "Bekeerd", name: "converted", widget: "boolean", default: true}
-      - {label: "Concept", name: "draft", widget: "boolean", default: true}
+      - {label: "Tijdperk", name: "age", widget: "string", default: '2e eeuw'}  
+      - {label: "Bekeerd", name: "converted", widget: "boolean", default: true, optional: true}
+      - {label: "Concept", name: "draft", widget: "boolean", default: true, optional: true}
   - label: "Pages"
     name: "pages"
     files:
