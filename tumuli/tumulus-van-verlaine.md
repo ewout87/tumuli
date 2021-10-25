@@ -4,5 +4,8 @@ image: /uploads/tumulus_van_verlaine.jpg
 coords: '{"type":"Point","coordinates":[5.3065091,50.6141511]}'
 location: Verlaine
 province: Luik
+accessibility: privé
+height: <5
+age: 2e eeuw
 ---
 Lorem ipsum
