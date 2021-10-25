@@ -17,6 +17,7 @@
 </template>
 
 <script>
+import Search from '~/components/Search.vue';
 import Burger from '~/components/Burger.vue';
 import Sidebar from '~/components/Sidebar.vue'
 
@@ -24,7 +25,8 @@ export default {
  name: 'app',
  components: {
    Burger,
-   Sidebar
+   Sidebar,
+   Search
  }
 }
 </script>

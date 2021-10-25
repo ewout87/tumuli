@@ -1,26 +1,21 @@
 <template>   
-    <div class="sidebar">
-      <div class="text-wrapper" ref="scrollToMe">
-        <div class="text-header">
-          <form>
+        <div class="search">
+          <form class="search-form">
             <input type="text" name="search" id="search" placeholder="Plaatsnaam..." v-model="search"> 
             <button class="button" href="" @click.prevent="boundsUpdate(search)"><i class="fas fa-search-location"></i></button>
           </form>
-        </div>
-        <div class="text-body results" v-if="searchResults.length > 0">
-            <div class="card" v-for="tumulus in searchResults" :key="tumulus.node.id"  @click="centerUpdate(tumulus.node.coords)">
-              <h3>{{tumulus.node.title}}</h3>
-              <p>{{tumulus.node.location}} - {{tumulus.node.province}}</p>
+          <div class="search-results" v-if="search"> 
+            <ul class="results" v-if="searchResults.length > 0">
+              <li class="result-item" v-for="tumulus in searchResults" :key="tumulus.node.id"  @click="centerUpdate(tumulus.node.coords)">
+                <h3>{{tumulus.node.title}}</h3>
+                <p>{{tumulus.node.location}} - {{tumulus.node.province}}</p>
+              </li>
+            </ul>
+            <div class="no-results" v-if="searchResults.length = 0">
+              <p>Geen tumuli gevonden op deze locatie.</p>
             </div>
-        </div>
-        <div class="text-body no-results" v-else>
-          <div class="card">  
-             <p>Geen tumuli gevonden op deze locatie.</p>
           </div>
         </div>
-        <social></social>
-      </div>
-    </div>
 </template>
 
 <script>
@@ -86,19 +81,7 @@ export default {
     color: #fff;
 }
 
-.text-container {
-    max-width: 1044px;
-    width: 100%;
-    padding: 0 3rem;
-    margin: 0 auto
-}
-
-.text-wrapper {
-    width: 100%;
-    background-color: transparent;
-}
-
-.text-header {
+.search-form {
     padding: 1rem 2rem;
     background-color: transparent;
     font-size: 1.5rem;
@@ -106,41 +89,38 @@ export default {
     height: 4rem;
 }
 
-.text-body {
-    overflow: scroll;
-    height: calc(100vh - 12rem);
-    color: #fff;
+.search-results {
+  overflow-y: auto;
+  padding: 0 2rem;
 }
 
-.card {
-    padding: 1rem 2rem;
-    cursor: pointer;
-    position: relative;
-    transition: all 0.5s ease;
-    -webkit-transition: all 0.5s ease-out;
-    -moz-transition: all 0.5s ease-out;
-    -o-transition: all 0.5s ease-out;
+.results {
+  padding-left: 0;
 }
 
-.card:hover::after {
-    background-color: #fff;
-    content: '';
-    display: block;
-    height: 1px;
-    width: 80%;
-    margin: 0 2rem;
-    position: absolute;
-    bottom: 0;
-    left: 0;
+.result-item {
+  list-style-type: none;
+  padding: 1rem 0;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.5s ease;
+  -webkit-transition: all 0.5s ease-out;
+  -moz-transition: all 0.5s ease-out;
+  -o-transition: all 0.5s ease-out;
+  border-bottom: 1px solid transparent;
 }
 
-.card p {
+.result-item:hover {
+  border-bottom: 1px solid #fff;
+}
+
+.result-item p {
     letter-spacing: 2px;
 }
 
 
-.card p,
-.card h3 {
+.result-item p,
+.result-item h3 {
     margin: 0;
 }
 

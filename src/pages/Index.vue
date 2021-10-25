@@ -120,7 +120,7 @@ query {
         coords
         location
         province
-        image (width: 500, height: 200, quality: 90)
+        image
       }
     }
   }

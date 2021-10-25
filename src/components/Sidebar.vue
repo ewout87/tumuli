@@ -3,21 +3,25 @@
         <div class="sidebar-backdrop" @click="closeSidebarPanel" v-if="isPanelOpen"></div>
         <transition name="slide">
             <div v-if="isPanelOpen" class="sidebar-panel">
-                <Search></Search>
-                <social></social>
+                <div class="sidebar-wrapper" ref="scrollToMe">
+                    <Search></Search>
+                    <Social></Social>
+                </div>
             </div>
         </transition>
     </div>
 </template>
 
 <script>
+import Social from '~/components/Social.vue'
 import Search from '~/components/Search.vue'
 import { store, mutations } from '@/store.js'
 
 export default {
     name: 'app',
     components: {
-        Search
+        Search,
+        Social
     },
     methods: {
         closeSidebarPanel: mutations.toggleNav
@@ -31,8 +35,7 @@ export default {
 </script>
 <style>
     .slide-enter-active,
-    .slide-leave-active
-    {
+    .slide-leave-active {
         transition: transform 0.2s ease;
     }
 
@@ -54,12 +57,20 @@ export default {
     }
 
     .sidebar-panel {
-        overflow-y: auto;
         background-color: #130f40;
         position: fixed;
         left: 0;
         top: 0;
         z-index: 999;
         width: 350px;
+        height: 100vh;
+    }
+
+    .sidebar-wrapper {
+        width: 100%;
+        height: 100%;
+        background-color: transparent;
+        position: relative;
+        color: #fff;
     }
 </style>
