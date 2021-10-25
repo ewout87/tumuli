@@ -15,9 +15,6 @@
         <l-control-zoom position="bottomright"></l-control-zoom>
         <l-polyline v-for="polyline in polylines" :key="polyline" :lat-lngs="polyline" :color="color"></l-polyline>
       </l-map>
-          <div v-for="marker in markers" :key="marker.node.id" :lat-lng="marker.node.coords" :icon="icon"> 
-            {{ marker.node.coords }}
-          </div>
     </ClientOnly>
   </Layout>
 </template>
