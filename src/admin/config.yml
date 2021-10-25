@@ -24,10 +24,10 @@ collections:
       - label: "Hoogte"
         name: "height"
         widget: "select"
-        options: ["<5", ">5 - <10", ">10"]
+        options: ["<5", "≥5 <10", "≥10"]
       - {label: "Tijdperk", name: "age", widget: "string", default: '2e eeuw'}  
-      - {label: "Bekeerd", name: "converted", widget: "boolean", default: true, optional: true}
-      - {label: "Concept", name: "draft", widget: "boolean", default: true, optional: true}
+      - {label: "Bekeerd", name: "converted", widget: "boolean", default: true, required: false}
+      - {label: "Concept", name: "draft", widget: "boolean", default: true, required: false}
   - label: "Pages"
     name: "pages"
     files:
