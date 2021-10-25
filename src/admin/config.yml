@@ -12,16 +12,29 @@ collections:
     create: true
     slug: "{{slug}}"
     fields:
-      - {label: "Title", name: "title", widget: "string"}
-      - {label: "Image", name: "image", widget: "image"}
-      - {label: "Coordinates", name: "coords", widget: "map", type: "Point"}
-      - {label: "Location", name: "location", widget: "string"}
-      - {label: "Province", name: "province", widget: "string"}
-  - name: "pages"
-    label: "Pages"
-    folder: "pages"
-    create: true
-    slug: "{{slug}}"
-    fields:
-      - {label: "Title", name: "title", widget: "string"}
-      - {label: "Body", name: "body", widget: "markdown"}
+      - {label: "Titel", name: "title", widget: "string"}
+      - {label: "Afbeelding", name: "image", widget: "image"}
+      - {label: "Coordinaten", name: "coords", widget: "map", type: "Point"}
+      - {label: "Locatie", name: "location", widget: "string"}
+      - {label: "Provincie", name: "province", widget: "string"}
+      - label: "Toegankelijkheid"
+        name: "accessibility"
+        widget: "select"
+        options: ["privé", "akker", "bos", "publiek"]
+      - label: "Hoogte"
+        name: "height"
+        widget: "select"
+        options: ["<5", ">5 - <10", ">10"]
+      - {label: "Tijdperk", name: "age", widget: "string"}  
+      - {label: "Bekeerd", name: "converted", widget: "boolean", default: true}
+      - {label: "Concept", name: "draft", widget: "boolean", default: true}
+  - label: "Pages"
+    name: "pages"
+    files:
+      - label: "About Page"
+        name: "about"
+        file: "site/content/about.yml"
+        fields:
+          - {label: Title, name: title, widget: string}
+          - {label: Intro, name: intro, widget: markdown}
+          - {label: Content, name: content, widget: markdown}

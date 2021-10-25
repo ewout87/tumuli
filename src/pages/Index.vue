@@ -6,9 +6,6 @@
         <l-marker-cluster>
           <l-marker v-for="marker in markers" :key="marker.node.id" :lat-lng="marker.node.coords" :icon="icon" @click="flyToMarker(marker.node.coords)"> 
             <l-tooltip :content="marker.node.title"></l-tooltip>
-            <l-popup>
-              <h3>{{ marker.node.title }}</h3>
-            </l-popup>
           </l-marker>
         </l-marker-cluster>
         <l-control-zoom position="bottomright"></l-control-zoom>
@@ -19,6 +16,7 @@
 </template>
 
 <script>
+import Tumulus from '~/components/Tumulus.vue'
 import { store, mutations } from '@/store.js'
 import polylines from '@/data/polylines.json'
 
@@ -40,11 +38,11 @@ export default {
     LMarker: Vue2Leaflet.LMarker,
     LTooltip: Vue2Leaflet.LTooltip,
     LIcon: Vue2Leaflet.LIcon,
-    LPopup: Vue2Leaflet.LPopup,
     LPolyline: Vue2Leaflet.LPolyline,
     LControlZoom: Vue2Leaflet.LControlZoom,
     latLngBounds: L.latLngBounds,
-    LMarkerCluster: Vue2LeafletMarkerCluster
+    LMarkerCluster: Vue2LeafletMarkerCluster,
+    Tumulus
   },
   data () {
     return {
