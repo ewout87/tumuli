@@ -7,5 +7,6 @@ province: Limburg
 accessibility: publiek
 height: ≥5 <10
 age: 2e eeuw
+number: 3
 ---
 Lorem ipsum
