@@ -5,7 +5,7 @@ coords: '{"type":"Point","coordinates":[5.5281776,50.8034837]}'
 location: Riemst
 province: Limburg
 accessibility: privé
-height: ≥5 <10
+height: "?"
 age: 2e eeuw
 ---
 Lorem ipsum
