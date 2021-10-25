@@ -7,5 +7,6 @@ province: Vlaams-Brabant
 accessibility: publiek
 height: ≥10
 age: 2e eeuw
+number: 3
 ---
 Lorem ipsum
