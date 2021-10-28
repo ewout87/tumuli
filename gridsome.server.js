@@ -4,11 +4,6 @@
 
 // Changes here require a server restart.
 // To restart press CTRL + C in terminal and run `gridsome develop`
-const fs = require('fs')
-const yaml = require('js-yaml')
-
-const fileContents = fs.readFileSync('./src/data/tumuli.yaml', 'utf8')
-//const tumuliData = yaml.load(fileContents)
 
 module.exports = function (api) {
   api.loadSource(({ addCollection }) => {

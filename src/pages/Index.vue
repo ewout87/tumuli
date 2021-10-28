@@ -4,13 +4,14 @@
       <l-map id="map" ref="map" :zoom="zoom" :center="center" :bounds="bounds" :options="{zoomControl: false}">
         <l-tile-layer :url="url"></l-tile-layer>
         <l-marker-cluster>
-          <l-marker v-for="marker in markers" :key="marker.node.id" :lat-lng="marker.node.coords" :icon="icon" @click="flyToMarker(marker.node.coords)"> 
+          <l-marker v-for="marker in markers" :key="marker.node.id" :lat-lng="marker.node.coords" :icon="icon" @click="flyToMarker(marker.node.coords), setTumulus(marker.node)"> 
             <l-tooltip :content="marker.node.title"></l-tooltip>
           </l-marker>
         </l-marker-cluster>
         <l-control-zoom position="bottomright"></l-control-zoom>
         <l-polyline v-for="polyline in polylines" :key="polyline" :lat-lngs="polyline" :color="color"></l-polyline>
       </l-map>
+      <Tumulus/>
     </ClientOnly>
   </Layout>
 </template>
@@ -55,7 +56,8 @@ export default {
       polylines,
       search: '',
       markers: [],
-      console: console.log()
+      tumulus: '',
+      selected: false
     };
   },
  computed: {
@@ -97,8 +99,9 @@ export default {
     boundsUpdated (bounds) {
       this.bounds = bounds
     },
-    setImage(image) {
-      this.image = image
+    setTumulus(tumulus) {
+      mutations.showTumulus()
+      mutations.updateTumulus(tumulus)
     },
     flyToMarker(coords) {
       this.$refs.map.mapObject.flyTo(coords, 15)
@@ -118,6 +121,11 @@ query {
         location
         province
         image
+        age
+        height
+        number
+        converted
+        accessibility
       }
     }
   }
@@ -125,39 +133,6 @@ query {
 </page-query>
 
 <style scoped>
-.no-image img {
-    filter: blur(10px);
-    -webkit-filter: blur(10px);
-    -moz-filter: blur(10px);
-    -o-filter: blur(10px);
-    -ms-filter: blur(10px);
-    margin: -10px;
-}
-
-.no-image {
-    overflow: hidden;
-    position: relative;
-}
-
-.no-image:after {
-    font-family: 'Roboto', sans-serif;
-    position: absolute;
-    display: block;
-    content: 'Geen afbeelding';
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-    color: #fff;
-    text-transform: uppercase;
-    font-size: 1.5rem;
-    line-height: 2rem;
-    font-weight: bold;
-    text-align: center;
-    padding-top: 6rem;
-}
-
 #map {
     margin-left: auto;
     position: relative; 
@@ -168,5 +143,9 @@ query {
 
 .leaflet-container {
     font-family: 'Jost', sans-serif;
+}
+
+.hide {
+    visibility: hidden !important;
 }
 </style>

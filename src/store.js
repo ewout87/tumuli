@@ -7,11 +7,29 @@ export const store = Vue.observable({
         [50.23167, 6.115278],
     ],
     zoom: 10,
-    coords: [50.67198817403728, 5.077813266040513]
+    coords: [50.67198817403728, 5.077813266040513],
+    tumulusSelected: false,
+    selectedTumulus: [],
+    likedTumulus: []
 });
 
 // We call toggleNav anywhere we need it in our app
 export const mutations = {
+    hideTumulus() {
+        store.tumulusSelected = false
+    },
+    showTumulus() {
+        store.tumulusSelected = true
+    },
+    likeTumulus(tumulus) {
+        store.likedTumulus.push(tumulus.id)
+    },
+    unlikeTumulus(tumulus) {
+        store.likedTumulus.splice(tumulus.id, 1)
+    },
+    updateTumulus(tumulus) {
+        store.selectedTumulus = tumulus
+    },
     toggleNav() {
         store.isNavOpen = !store.isNavOpen
     },
@@ -21,5 +39,5 @@ export const mutations = {
     },
     boundsUpdate(bounds){
         store.bounds = bounds
-    },
+    }
 };

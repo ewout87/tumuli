@@ -6,19 +6,20 @@
             <g-image src="~/assets/images/icon.png" alt="Logo" width="50" height="50"/>
           </g-link>
           <div class="sitename">
-            <p>Bezoek onze<br><strong>Tumuli</strong></p>
+            <p>Ontdek onze<br><strong>Tumuli</strong></p>
           </div>
         </div>
-        <Burger></Burger>
+        <Social/>
+        <Burger/>
       </div>
-      <Sidebar></Sidebar>
+      <Sidebar/>
       <slot></slot>
   </div>
 </template>
 
 <script>
-import Search from '~/components/Search.vue';
-import Burger from '~/components/Burger.vue';
+import Burger from '~/components/Burger.vue'
+import Social from '~/components/Social.vue'
 import Sidebar from '~/components/Sidebar.vue'
 
 export default {
@@ -26,8 +27,8 @@ export default {
  components: {
    Burger,
    Sidebar,
-   Search
- }
+   Social
+ },
 }
 </script>
 

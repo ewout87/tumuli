@@ -4,8 +4,7 @@
         <transition name="slide">
             <div v-if="isPanelOpen" class="sidebar-panel">
                 <div class="sidebar-wrapper" ref="scrollToMe">
-                    <Search></Search>
-                    <Social></Social>
+                    <List></List>
                 </div>
             </div>
         </transition>
@@ -13,15 +12,13 @@
 </template>
 
 <script>
-import Social from '~/components/Social.vue'
-import Search from '~/components/Search.vue'
+import List from '~/components/List.vue'
 import { store, mutations } from '@/store.js'
 
 export default {
     name: 'app',
     components: {
-        Search,
-        Social
+        List
     },
     methods: {
         closeSidebarPanel: mutations.toggleNav
@@ -57,7 +54,7 @@ export default {
     }
 
     .sidebar-panel {
-        background-color: #130f40;
+        background-color: #fff;
         position: fixed;
         left: 0;
         top: 0;
@@ -71,6 +68,7 @@ export default {
         height: 100%;
         background-color: transparent;
         position: relative;
-        color: #fff;
+        color: rgba(0,0,0,0.8);
+        overflow-y: scroll;
     }
 </style>
