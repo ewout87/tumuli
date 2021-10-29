@@ -8,6 +8,4 @@ accessibility: Bos
 height: "?"
 age: 2e eeuw
 number: 2
-converted: false
-draft: false
 ---
