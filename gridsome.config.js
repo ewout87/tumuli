@@ -34,6 +34,7 @@ module.exports = {
     },
   ],
   chainWebpack: config => {
-    config.resolve.alias.set('@images', '@/assets/images')
+    config.resolve.alias.set('@images', '@/assets/images'),
+    config.resolve.alias.set('@tumuli', '@/static')
   },
 }

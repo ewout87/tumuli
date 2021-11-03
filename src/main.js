@@ -12,13 +12,25 @@ import {
   faCross,
   faTimes,
   faMountain,
-  faHeart
+  faHeart,
+  faBicycle,
+  faCar
 } from '@fortawesome/free-solid-svg-icons'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 export default function (Vue, { router, head, isClient }) {
-  library.add(faHourglassHalf, faArrowsAltV, faHiking, faCross, faTimes, faMountain, faHeart)
+  library.add(
+    faHourglassHalf, 
+    faArrowsAltV, 
+    faHiking, 
+    faCross, 
+    faTimes, 
+    faMountain, 
+    faHeart, 
+    faBicycle, 
+    faCar
+    )
   // Set default layout as a global component
   Vue.component('Layout', DefaultLayout)
   Vue.component('AppIcon', FontAwesomeIcon)

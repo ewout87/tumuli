@@ -23,7 +23,7 @@ export default {
     },
     methods: {
         toggle() {
-            mutations.toggleNav()
+            mutations.toggleSidebar()
         }
     }
 }

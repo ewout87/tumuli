@@ -60,7 +60,7 @@ export default {
         [data.data[0].boundingbox[0], data.data[0].boundingbox[3]]
       ])
 
-        mutations.boundsUpdate(bounds)
+        mutations.updateBounds(bounds)
       } 
       catch (error) {
         console.log(error)
@@ -71,7 +71,6 @@ export default {
 </script>
 
 <style scoped>
-
 .button {
     background-color: transparent;
     border: none;

@@ -9,8 +9,11 @@
             <p>Ontdek onze<br><strong>Tumuli</strong></p>
           </div>
         </div>
-        <Social/>
-        <Burger/>
+        <ul class="menu">
+          <li class="menu-item"><Social/></li>
+          <li class="menu-item"><Likes/></li>
+          <li class="menu-item"><Burger/></li>
+        </ul>
       </div>
       <Sidebar/>
       <slot></slot>
@@ -21,13 +24,15 @@
 import Burger from '~/components/Burger.vue'
 import Social from '~/components/Social.vue'
 import Sidebar from '~/components/Sidebar.vue'
+import Likes from '~/components/Likes.vue'
 
 export default {
  name: 'app',
  components: {
    Burger,
    Sidebar,
-   Social
+   Social,
+   Likes
  },
 }
 </script>
@@ -54,64 +59,69 @@ query {
     color: rgba(0,0,0,0.8);
   }
 
-    .navbar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-flow: row wrap;
-      background: #add19e;
-      padding: 1rem 0;
-      height: 4rem;
-      position: fixed;
-      top: 0;
-      left: 0;
-      z-index: 99;
-      width: 100%;
-    }
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-flow: row wrap;
+    background: #add19e;
+    padding: 1rem 0;
+    height: 4rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 99;
+    width: 100%;
+  }
 
-    .logo {
-        display: flex;
-        flex: row wrap;
-        text-align: center;
-        align-self: center;
-        margin-left: 1rem;
-    }
+  .button {
+    border: 0;
+    border-radius: 0;
+    background-color: transparent;
+  }
 
-    .sitename {
-        font-family: 'Roboto', sans-serif;
-        text-transform: uppercase;
-        font-weight: bolder;
-        text-align: center;
-        line-height: 1.5rem;
-    }
+  .logo {
+    display: flex;
+    flex: row wrap;
+    text-align: center;
+    align-self: center;
+    margin-left: 1rem;
+  }
+
+  .sitename {
+    font-family: 'Roboto', sans-serif;
+    text-transform: uppercase;
+    font-weight: bolder;
+    text-align: center;
+    line-height: 1.5rem;
+  }
       
-    .sitename p {
-        margin: 0;
-        color: #fff;
-        letter-spacing: 2px;
-    }
+  .sitename p {
+    margin: 0;
+    color: #fff;
+    letter-spacing: 2px;
+  }
       
-    .sitename strong {
-        font-size: 2rem;
-        line-height: 1.5rem;
-    }
+  .sitename strong {
+    font-size: 2rem;
+    line-height: 1.5rem;
+  }
 
-    .menu {
-        display: flex; 
-        margin-right: 1rem;
-    }
+  .menu {
+    display: flex; 
+    margin-right: 1rem;
+  }
 
-    .menu-item {
-        list-style: none;
-    }
+  .menu-item {
+    list-style: none;
+    margin-left: 2rem;
+  }
 
-    .menu-link {
-        text-decoration: none;
-        color: #fff;
-        transform: uppercase;
-        font-size: 1.2rem;
-        letter-spacing: 2px;
-    }
-
-
+  .menu-link {
+    text-decoration: none;
+    color: #fff;
+    transform: uppercase;
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+  }
 </style>

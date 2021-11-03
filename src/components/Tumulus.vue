@@ -7,18 +7,18 @@
     <div class="tumulus-container">
       <div class="title">
         <h2>{{tumulus.title}}</h2>
-        <button type="button" class="button" @click.prevent="toggleLike(tumulus)">
+        <button type="button" class="button" @click.prevent="toggleLike(tumulus.title)">
           <app-icon :class="{liked: liked}" icon="heart" size="lg"></app-icon>
         </button>
       </div>
       <p>{{tumulus.location}} - {{tumulus.province}}</p>
       <hr>
       <ul class="list">
-        <li class="list-item"><app-icon class="list-icon" icon="hourglass-half" size="lg"></app-icon>{{ tumulus.age }}</li>
-        <li class="list-item"><app-icon class="list-icon" icon="arrows-alt-v" size="lg"></app-icon>{{ tumulus.height }} m</li>
-        <li class="list-item"><app-icon class="list-icon" icon="hiking" size="lg"></app-icon>{{ tumulus.accessibility }}</li>
-        <li class="list-item" v-if="tumulus.number"><app-icon class="list-icon" icon="mountain" size="md"></app-icon>{{ tumulus.number }} tumuli</li>
-        <li class="list-item" v-if="tumulus.converted"><app-icon class="list-icon" icon="cross" size="lg"></app-icon>{{ tumulus.converted }} Gekerstend</li>
+        <li class="list-item"><app-icon class="list-icon" icon="hourglass-half" size="lg"/>{{ tumulus.age }}</li>
+        <li class="list-item"><app-icon class="list-icon" icon="arrows-alt-v" size="lg"/>{{ tumulus.height }} m</li>
+        <li class="list-item"><app-icon class="list-icon" icon="hiking" size="lg"/>{{ tumulus.accessibility }}</li>
+        <li class="list-item" v-if="tumulus.number"><app-icon class="list-icon" icon="mountain" size="md"/>{{ tumulus.number }} tumuli</li>
+        <li class="list-item" v-if="tumulus.converted"><app-icon class="list-icon" icon="cross" size="lg"/>Gekerstend</li>
       </ul>
     </div>
   </div>
@@ -36,10 +36,10 @@ export default {
       return store.tumulusSelected
     },
     imageUrl() {
-      return '"' + store.selectedTumulus.image + '"'
+      return store.selectedTumulus.image
     },
     liked() {
-      if(store.likedTumulus.includes(store.selectedTumulus.id)) {
+      if(store.likedTumulus.includes(store.selectedTumulus.title)) {
         return true
       }
     }
@@ -49,7 +49,7 @@ export default {
       mutations.hideTumulus()
     },
     toggleLike(tumulus){
-      if(store.likedTumulus.includes(store.selectedTumulus.id)) {
+      if(store.likedTumulus.includes(store.selectedTumulus.title)) {
         mutations.unlikeTumulus(tumulus)
       }
       else {
@@ -62,6 +62,7 @@ export default {
 
 <style scoped>
   .tumulus {
+    background-color: #fff;
     max-width: 400px;
     position: absolute;
     width: 100%;
@@ -71,6 +72,21 @@ export default {
     display: block;
     z-index: 1;
     box-shadow: 12px 12px 2px 1px rgba(0, 0, 255, .2);
+  }
+
+  @media only screen and (max-width: 1000px) {
+    .tumulus {
+      transform: translateY(0);
+      left: calc(50% - 200px);
+      top: calc(50% + 2rem);
+    }
+  }
+
+  @media only screen and (max-width: 400px) {
+    .tumulus {
+      left: 0;
+      top: calc(50% + 2rem);
+    }
   }
 
   .tumulus h2 {
@@ -95,7 +111,6 @@ export default {
 
   .tumulus-container {
     padding: 1rem 2rem;
-    background: #fff;
   }
 
   .background {

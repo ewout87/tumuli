@@ -1,8 +1,8 @@
 <template>
     <div class="sidebar">
-        <div class="sidebar-backdrop" @click="closeSidebarPanel" v-if="isPanelOpen"></div>
+        <div class="sidebar-backdrop" @click="closeSidebarPanel" v-if="isSidebarOpen"></div>
         <transition name="slide">
-            <div v-if="isPanelOpen" class="sidebar-panel">
+            <div v-if="isSidebarOpen" class="sidebar-panel">
                 <div class="sidebar-wrapper" ref="scrollToMe">
                     <List></List>
                 </div>
@@ -21,11 +21,11 @@ export default {
         List
     },
     methods: {
-        closeSidebarPanel: mutations.toggleNav
+        closeSidebarPanel: mutations.toggleSidebar
     },
     computed: {
-        isPanelOpen() {
-            return store.isNavOpen
+        isSidebarOpen() {
+            return store.isSidebarOpen
         }
     }
 }
