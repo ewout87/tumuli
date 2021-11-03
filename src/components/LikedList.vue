@@ -82,7 +82,6 @@ export default {
         this.getRoute(likedTumuli[i-1], likedTumuli[i], transportMode)
       }
       this.isActive = transportMode
-      this.getBounds(this.routes)
       mutations.updateRoutes(this.routes)
       mutations.updateBounds(this.bounds)
       mutations.hideTumulus()
@@ -127,6 +126,7 @@ export default {
         route.distance = km ? km : 'minder dan 1km'
         route.duration = hours ? hours + ' uur ' + minutes + ' minuten': minutes + ' minuten'
         route.bbox = data.data.bbox
+        this.bounds.push([route.bbox[3], route.bbox[0]], [route.bbox[1], route.bbox[2]])
         this.routes.push(route)
       } 
       catch (error) {
