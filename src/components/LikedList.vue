@@ -25,7 +25,6 @@
         </button>
       </div>
       <div class="directions" v-if="routes.length > 0">
-        {{ bounds }}
         <div class="route" v-for="route in routes" :key="route.id">
           <p><strong>{{ route.name }}</strong></p>
           <p><label>Afstand:</label> {{route.distance}}</p>
