@@ -27,8 +27,8 @@
       <div class="directions" v-if="routes.length > 0">
         <div class="route" v-for="route in routes" :key="route.id">
           <p><strong>{{ route.name }}</strong></p>
-          <p><label>Afstand:</label> {{route.distance}}</p>
-          <p><label>Reistijd:</label> {{route.duration}}</p>
+          <p><label>Afstand:</label> {{ route.distance }}</p>
+          <p><label>Reistijd:</label> {{ route.duration }}</p>
           <label>Routebeschrijving:</label>
           <ul class="steps">
             <li class="step" v-for="step in route.steps" :key="step.id">
@@ -78,27 +78,27 @@ export default {
     closeSidebarPanel: mutations.toggleSidebar,
     getDirections(likedTumuli, transportMode) {
       this.routes = []
-      for( var i = 1; i < likedTumuli.length; i++){ 
-        this.getRoute(likedTumuli[i-1], likedTumuli[i], transportMode)
+      this.bounds = []
+      for( var i = 0; i < likedTumuli.length; i++){ 
+        if(i >= 1){
+          this.getRoute(likedTumuli[i-1], likedTumuli[i], transportMode)
+        }
+        this.bounds.push(likedTumuli[i][0].node.coordinates)
       }
       this.isActive = transportMode
-      mutations.updateRoutes(this.routes)
       mutations.updateBounds(this.bounds)
+      mutations.updateRoutes(this.routes)
       mutations.hideTumulus()
     },
-    getBounds(routes) {
-      this.bounds = []
-      var boundW = []
-      var boundS = []
-      var boundE = []
-      var boundN = []
-      for( var i = 0; i < routes.length; i++){ 
-        boundN.push(routes[i].bbox[3])
-        boundW.push(routes[i].bbox[0])
-        boundS.push(routes[i].bbox[1])
-        boundE.push(routes[i].bbox[2])
-      }
-      this.bounds.push([Math.max(boundN), Math.min(boundW)], [Math.min(boundS), Math.max(boundE)])
+    calculateHours(time) {
+      var hours = Math.floor(time / 3600);
+      time = time - hours * 3600;
+      var minutes = Math.floor(time / 60);
+      return hours ? hours + ' uur ' + minutes + ' minuten': minutes + ' minuten'
+    },
+    calculateKm(distance) {
+      var km =  Math.round(distance/1000) + ' km'
+      return km ? km : 'minder dan 1km'
     },
     async getRoute(tumulus1, tumulus2, transportMode) {
       var apiKey = '5b3ce3597851110001cf62489c7a7fecfb1349e088723b72860ea119'
@@ -114,19 +114,10 @@ export default {
         route.coordinates = data.data.features[0].geometry.coordinates.map(function reverse(element) {
           return element.reverse()
         })
-        var name = 'Van ' + tumulus1[0].node.title + ' naar ' + tumulus2[0].node.title
-        var distance = data.data.features[0].properties.segments[0].distance
-        var km = Math.round(distance/1000) + ' km'
-        var time = data.data.features[0].properties.segments[0].duration
-        var hours = Math.floor(time / 3600);
-        time = time - hours * 3600;
-        var minutes = Math.floor(time / 60);
-        route.name = name
+        route.name = 'Van ' + tumulus1[0].node.title + ' naar ' + tumulus2[0].node.title
         route.steps = data.data.features[0].properties.segments[0].steps
-        route.distance = km ? km : 'minder dan 1km'
-        route.duration = hours ? hours + ' uur ' + minutes + ' minuten': minutes + ' minuten'
-        route.bbox = data.data.bbox
-        this.bounds.push([route.bbox[3], route.bbox[0]], [route.bbox[1], route.bbox[2]])
+        route.distance = this.calculateKm(data.data.features[0].properties.segments[0].distance)
+        route.duration = this.calculateHours(data.data.features[0].properties.segments[0].duration)
         this.routes.push(route)
       } 
       catch (error) {
@@ -211,9 +202,12 @@ export default {
     letter-spacing: 2px;
   }
 
-
   .result-item p,
   .result-item h3 {
     margin: 0;
+  }
+
+  .steps {
+    padding-left: 1rem;
   }
 </style>

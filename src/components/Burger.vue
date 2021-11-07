@@ -29,10 +29,6 @@ export default {
 }
 </script>
 <style>
-    #burger {
-        margin-right: 1rem;
-    }
-
    .hidden {
         visibility: hidden;
     }

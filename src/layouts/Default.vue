@@ -114,7 +114,10 @@ query {
 
   .menu-item {
     list-style: none;
-    margin-left: 2rem;
+  }
+
+  .menu-item + .menu-item {
+    margin-left: 1rem;
   }
 
   .menu-link {
