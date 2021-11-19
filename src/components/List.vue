@@ -71,19 +71,13 @@ export default {
 </script>
 
 <style scoped>
-.button {
-    background-color: transparent;
-    border: none;
-    border-radius: 0;
-    font-size: 2rem;
-}
-
 .search-form {
     padding: 1rem 2rem;
     background-color: transparent;
     font-size: 1.5rem;
     line-height: 2rem;
     height: 4rem;
+    display: flex;
 }
 
 .search-results {
@@ -118,23 +112,5 @@ export default {
 .result-item p,
 .result-item h3 {
   margin: 0;
-}
-
-form {
-  display: flex;
-}
-
-#search {
-    font-family: 'Jost', sans-serif;
-    font-size: 1rem;
-    line-height: 2rem;
-    background-color: transparent;
-    border: 0px solid;
-    border-bottom: 1px solid rgba(0,0,0,0.8);;
-    letter-spacing: 2px;
-}
-
-#search:focus {
-    outline: none;
 }
 </style>

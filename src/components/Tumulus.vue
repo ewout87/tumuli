@@ -1,25 +1,28 @@
 <template>
-  <div class="tumulus" :class="{ hide: !show }" >
-    <button type="button" class="button close-button" @click.prevent="hide()">
-      <app-icon class="close-icon" icon="times" size="lg"></app-icon>
-    </button>
-    <div class="background" :style="{ backgroundImage: 'url(' + imageUrl + ')' }"></div>
-    <div class="tumulus-container">
-      <div class="title">
-        <h2>{{tumulus.title}}</h2>
-        <button type="button" class="button" @click.prevent="toggleLike(tumulus.title)">
-          <app-icon :class="{liked: liked}" icon="heart" size="lg"></app-icon>
-        </button>
+  <div :class="{ hide: !show }" >
+    <div class="tumulus-backdrop" @click="hide()"></div>
+    <div class="tumulus">
+      <button type="button" class="button close-button" @click="hide()">
+        <app-icon class="close-icon" icon="times" size="lg"></app-icon>
+      </button>
+      <div class="background" :style="{ backgroundImage: 'url(' + imageUrl + ')' }"></div>
+      <div class="tumulus-container">
+        <div class="title">
+          <h2>{{tumulus.title}}</h2>
+          <button type="button" class="button" @click.prevent="toggleLike(tumulus.title)">
+            <app-icon :class="{liked: liked}" icon="heart" size="lg"></app-icon>
+          </button>
+        </div>
+        <p>{{tumulus.location}} - {{tumulus.province}}</p>
+        <hr>
+        <ul class="list">
+          <li class="list-item"><app-icon class="list-icon" icon="hourglass-half" size="lg"/>{{ tumulus.age }}</li>
+          <li class="list-item"><app-icon class="list-icon" icon="arrows-alt-v" size="lg"/>{{ tumulus.height }} m</li>
+          <li class="list-item"><app-icon class="list-icon" icon="hiking" size="lg"/>{{ tumulus.accessibility }}</li>
+          <li class="list-item" v-if="tumulus.number"><app-icon class="list-icon" icon="mountain" size="md"/>{{ tumulus.number }} tumuli</li>
+          <li class="list-item" v-if="tumulus.converted"><app-icon class="list-icon" icon="cross" size="lg"/>Gekerstend</li>
+        </ul>
       </div>
-      <p>{{tumulus.location}} - {{tumulus.province}}</p>
-      <hr>
-      <ul class="list">
-        <li class="list-item"><app-icon class="list-icon" icon="hourglass-half" size="lg"/>{{ tumulus.age }}</li>
-        <li class="list-item"><app-icon class="list-icon" icon="arrows-alt-v" size="lg"/>{{ tumulus.height }} m</li>
-        <li class="list-item"><app-icon class="list-icon" icon="hiking" size="lg"/>{{ tumulus.accessibility }}</li>
-        <li class="list-item" v-if="tumulus.number"><app-icon class="list-icon" icon="mountain" size="md"/>{{ tumulus.number }} tumuli</li>
-        <li class="list-item" v-if="tumulus.converted"><app-icon class="list-icon" icon="cross" size="lg"/>Gekerstend</li>
-      </ul>
     </div>
   </div>
 </template>
@@ -61,6 +64,16 @@ export default {
 </script>
 
 <style scoped>
+  .tumulus-backdrop {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    z-index: 9;
+    top: 0;
+    left: 0;
+    cursor: pointer;
+  }
+
   .tumulus {
     background-color: #fff;
     max-width: 400px;
@@ -70,7 +83,7 @@ export default {
     transform: translateY(-50%);
     left: calc(25% - 200px);
     display: block;
-    z-index: 1;
+    z-index: 99;
     box-shadow: 12px 12px 2px 1px rgba(0, 0, 255, .2);
   }
 

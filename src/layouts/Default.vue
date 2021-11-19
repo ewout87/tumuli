@@ -74,10 +74,27 @@ query {
     width: 100%;
   }
 
-  .button {
-    border: 0;
-    border-radius: 0;
+  input {
+    font-family: 'Jost', sans-serif;
+    font-size: 1rem;
     background-color: transparent;
+    border: 0px solid;
+    border-bottom: 1px solid rgba(0,0,0,0.8);;
+    letter-spacing: 2px;
+    margin-bottom: 1rem;
+  }
+
+  input:focus {
+    outline: none;
+  }
+
+  .button {
+    font-family: 'Jost', sans-serif;
+    font-size: 1rem;
+    letter-spacing: 2px;
+    background-color: transparent;
+    border: none;
+    border-radius: 0;
   }
 
   .logo {
