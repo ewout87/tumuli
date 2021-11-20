@@ -105,7 +105,7 @@ export default {
       mutations.updateTumulus(tumulus)
     },
     flyToMarker(coords) {
-      this.$refs.map.mapObject.flyTo(coords, 15)
+      this.$refs.map.mapObject.flyTo(coords, 13)
     },
   }
 };

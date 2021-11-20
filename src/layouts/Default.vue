@@ -79,13 +79,14 @@ query {
     font-size: 1rem;
     background-color: transparent;
     border: 0px solid;
-    border-bottom: 1px solid rgba(0,0,0,0.8);;
+    border-bottom: 1px solid rgba(0,0,0,0.8);
     letter-spacing: 2px;
     margin-bottom: 1rem;
   }
 
   input:focus {
     outline: none;
+    border-bottom: 1px solid rgb(216, 122, 0);
   }
 
   .button {
@@ -134,7 +135,7 @@ query {
   }
 
   .menu-item + .menu-item {
-    margin-left: 1rem;
+    margin-left: 2rem;
   }
 
   .menu-link {
