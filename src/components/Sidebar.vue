@@ -3,6 +3,9 @@
         <div class="sidebar-backdrop" @click="closeSidebarPanel" v-if="isSidebarOpen"></div>
         <transition name="slide">
             <div v-if="isSidebarOpen" class="sidebar-panel">
+                <button type="button" class="button close-button" @click="closeSidebarPanel">
+                    <app-icon class="close-icon" icon="times" size="lg"></app-icon>
+                </button>
                 <div class="sidebar-wrapper" ref="scrollToMe">
                     <List></List>
                 </div>
@@ -31,6 +34,13 @@ export default {
 }
 </script>
 <style>
+    .sidebar .close-button {
+        width: 100%;
+        text-align: right;
+        padding-top: 1rem;
+        padding-right: 1rem;
+    }
+    
     .slide-enter-active,
     .slide-leave-active {
         transition: transform 0.2s ease;
@@ -70,5 +80,11 @@ export default {
         position: relative;
         color: rgba(0,0,0,0.8);
         overflow-y: scroll;
+    }
+
+    @media only screen and (max-width: 400px) {
+        .sidebar-panel {
+            width: 100%;
+        }
     }
 </style>

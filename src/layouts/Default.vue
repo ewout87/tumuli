@@ -100,7 +100,7 @@ query {
 
   .logo {
     display: flex;
-    flex: row wrap;
+    flex-flow: row wrap;
     text-align: center;
     align-self: center;
     margin-left: 1rem;
@@ -144,5 +144,19 @@ query {
     transform: uppercase;
     font-size: 1.2rem;
     letter-spacing: 2px;
+  }
+
+  @media only screen and (max-width: 400px) {
+    .logo {
+      flex-flow: column wrap;
+    }
+
+    .navbar {
+      height: 8rem;
+    }
+
+    .menu-item + .menu-item {
+      margin-left: 1rem;
+    }
   }
 </style>

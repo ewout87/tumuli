@@ -26,6 +26,7 @@ export default {
   data () {
     return {
       search: '',
+      results: []
     };
   },
   computed: {
@@ -45,7 +46,7 @@ export default {
   },
   methods: { 
     showTumulus(tumulus) {
-      mutations.centerUpdate(tumulus.coords)
+      mutations.centerUpdate(tumulus.coordinates)
       mutations.showTumulus()
       mutations.updateTumulus(tumulus)
     },
@@ -71,46 +72,46 @@ export default {
 </script>
 
 <style scoped>
-.search-form {
-    padding: 1rem 2rem;
-    background-color: transparent;
-    font-size: 1.5rem;
-    line-height: 2rem;
-    height: 4rem;
-    display: flex;
-}
+  .search-form {
+      padding: 1rem 2rem;
+      background-color: transparent;
+      font-size: 1.5rem;
+      line-height: 2rem;
+      height: 4rem;
+      display: flex;
+  }
 
-.search-results {
-  padding: 0 2rem;
-}
+  .search-results {
+    padding: 0 2rem;
+  }
 
-.results {
-  padding-left: 0;
-}
+  .results {
+    padding-left: 0;
+  }
 
-.result-item {
-  list-style-type: none;
-  padding: 1rem 0;
-  cursor: pointer;
-  position: relative;
-  transition: all 0.5s ease;
-  -webkit-transition: all 0.5s ease-out;
-  -moz-transition: all 0.5s ease-out;
-  -o-transition: all 0.5s ease-out;
-  border-bottom: 1px solid transparent;
-}
+  .result-item {
+    list-style-type: none;
+    padding: 1rem 0;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.5s ease;
+    -webkit-transition: all 0.5s ease-out;
+    -moz-transition: all 0.5s ease-out;
+    -o-transition: all 0.5s ease-out;
+    border-bottom: 1px solid transparent;
+  }
 
-.result-item:hover {
-  border-bottom: 1px solid rgba(0,0,0,0.8);
-}
+  .result-item:hover {
+    border-bottom: 1px solid rgba(0,0,0,0.8);
+  }
 
-.result-item p {
-  letter-spacing: 2px;
-}
+  .result-item p {
+    letter-spacing: 2px;
+  }
 
 
-.result-item p,
-.result-item h3 {
-  margin: 0;
-}
+  .result-item p,
+  .result-item h3 {
+    margin: 0;
+  }
 </style>

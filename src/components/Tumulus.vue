@@ -19,7 +19,7 @@
           <li class="list-item"><app-icon class="list-icon" icon="hourglass-half" size="lg"/>{{ tumulus.age }}</li>
           <li class="list-item"><app-icon class="list-icon" icon="arrows-alt-v" size="lg"/>{{ tumulus.height }} m</li>
           <li class="list-item"><app-icon class="list-icon" icon="hiking" size="lg"/>{{ tumulus.accessibility }}</li>
-          <li class="list-item" v-if="tumulus.number"><app-icon class="list-icon" icon="mountain" size="md"/>{{ tumulus.number }} tumuli</li>
+          <li class="list-item" v-if="tumulus.number"><app-icon class="list-icon" icon="mountain" size="lg"/>{{ tumulus.number }} tumuli</li>
           <li class="list-item" v-if="tumulus.converted"><app-icon class="list-icon" icon="cross" size="lg"/>Gekerstend</li>
         </ul>
       </div>
@@ -87,21 +87,6 @@ export default {
     box-shadow: 12px 12px 2px 1px rgba(0, 0, 255, .2);
   }
 
-  @media only screen and (max-width: 1000px) {
-    .tumulus {
-      transform: translateY(0);
-      left: calc(50% - 200px);
-      top: calc(50% + 2rem);
-    }
-  }
-
-  @media only screen and (max-width: 400px) {
-    .tumulus {
-      left: 0;
-      top: calc(50% + 2rem);
-    }
-  }
-
   .tumulus h2 {
     line-height: 1.5rem;
     margin-top: 0;
@@ -162,5 +147,21 @@ export default {
   .close-icon {
     color: #fff;
     filter: drop-shadow(2px 2px 0px rgba(0, 0, 255, .2));
+  }
+
+  
+  @media only screen and (max-width: 1000px) {
+    .tumulus {
+      transform: translateY(0);
+      left: calc(50% - 200px);
+      top: calc(50% + 2rem);
+    }
+  }
+
+  @media only screen and (max-width: 400px) {
+    .tumulus {
+      left: 0;
+      top: calc(50% + 2rem);
+    }
   }
 </style>

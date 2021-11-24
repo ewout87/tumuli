@@ -8,7 +8,7 @@
           <div class="title">
             <div>
               <h3>{{ likedTumulus[0].node.title }}</h3>
-              <p>{{likedTumulus[0].node.location}} - {{likedTumulus[0].node.province}}</p>
+              <p>{{ likedTumulus[0].node.location }} - {{likedTumulus[0].node.province}}</p>
             </div>
             <button type="button" class="button" @click.prevent="unlike(likedTumulus[0].node.title)">
               <app-icon class="liked" icon="heart" size="lg"></app-icon>
@@ -112,5 +112,13 @@ export default {
   .result-item p,
   .result-item h3 {
     margin: 0;
+  }
+
+  @media only screen and (max-width: 400px) {
+    .liked-list {
+      max-width: 100%;
+      top: calc(50% + 2rem);
+      right: 0;
+    }
   }
 </style>

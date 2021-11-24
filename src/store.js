@@ -44,8 +44,8 @@ export const mutations = {
     toggleLikes() {
         store.isLikesOpen = !store.isLikesOpen
     },
-    centerUpdate(coords) {
-        store.coords = coords
+    centerUpdate(coordinates) {
+        store.coords = coordinates
         store.zoom = 15
     },
     updateBounds(bounds){
