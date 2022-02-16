@@ -1,5 +1,5 @@
 <template>   
-    <div class= "inner-wide footer">
+    <div class= "footer">
         <g-link href="https://www.instagram.com/tumulispotter/" target="_blank" class="social-icon"><i class="fab fa-instagram"></i></g-link>
     </div>
 </template>
@@ -10,10 +10,10 @@
     font-size: 2rem;
 }
 
-.inner-wide.footer{
+.footer{
     text-align: center;
     background: #add19e;
-    margin-bottom: 0;
+    margin-top: 3rem;
     padding: 5rem 0;
 }
 </style>

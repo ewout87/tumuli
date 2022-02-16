@@ -27,6 +27,7 @@ import Burger from '~/components/Burger.vue'
 import Footer from '~/components/Footer.vue'
 import Sidebar from '~/components/Sidebar.vue'
 import Likes from '~/components/Likes.vue'
+import AOS from 'aos'
 
 export default {
  name: 'app',
@@ -35,6 +36,9 @@ export default {
    Sidebar,
    Footer,
    Likes
+ },
+ mounted(){
+  AOS.init()
  },
  methods: {
    scrollToTop() {
