@@ -14,10 +14,12 @@ import {
   faMountain,
   faHeart,
   faBicycle,
-  faCar
+  faCar,
 } from '@fortawesome/free-solid-svg-icons'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import AOS from 'aos'
+import 'aos/dist/aos.css'
 
 export default function (Vue, { router, head, isClient }) {
   library.add(
@@ -29,9 +31,10 @@ export default function (Vue, { router, head, isClient }) {
     faMountain, 
     faHeart, 
     faBicycle, 
-    faCar
+    faCar,
     )
   // Set default layout as a global component
   Vue.component('Layout', DefaultLayout)
   Vue.component('AppIcon', FontAwesomeIcon)
+  Vue.use(AOS.init());
 }

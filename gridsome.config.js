@@ -27,6 +27,16 @@ module.exports = {
       }
     },
     {
+      use: '@gridsome/source-filesystem',
+      options: {
+        path: 'provinces/**/*.md',
+        typeName: 'Provinces',
+        remark: {
+          plugins: []
+        }
+      }
+    },
+    {
       use: `gridsome-plugin-netlify-cms`,
       options: {
         publicPath: `/admin`

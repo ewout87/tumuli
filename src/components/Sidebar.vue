@@ -3,11 +3,11 @@
         <div class="sidebar-backdrop" @click="closeSidebarPanel" v-if="isSidebarOpen"></div>
         <transition name="slide">
             <div v-if="isSidebarOpen" class="sidebar-panel">
-                <button type="button" class="button close-button" @click="closeSidebarPanel">
+                <button type="button" class="close-button" @click="closeSidebarPanel">
                     <app-icon class="close-icon" icon="times" size="lg"></app-icon>
                 </button>
                 <div class="sidebar-wrapper" ref="scrollToMe">
-                    <List></List>
+                   
                 </div>
             </div>
         </transition>
@@ -15,14 +15,10 @@
 </template>
 
 <script>
-import List from '~/components/List.vue'
 import { store, mutations } from '@/store.js'
 
 export default {
     name: 'app',
-    components: {
-        List
-    },
     methods: {
         closeSidebarPanel: mutations.toggleSidebar
     },
@@ -79,7 +75,7 @@ export default {
         background-color: transparent;
         position: relative;
         color: rgba(0,0,0,0.8);
-        overflow-y: scroll;
+        overflow-y: auto;
     }
 
     @media only screen and (max-width: 400px) {

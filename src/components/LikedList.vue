@@ -1,8 +1,5 @@
 <template>   
     <div class="liked-list" v-if="isLikesOpen">
-      <button type="button" class="button close-button" @click="toggle()">
-        <app-icon class="close-icon" icon="times" size="lg"></app-icon>
-      </button>
       <ul class="results">
         <li class="result-item" v-for="likedTumulus in likedTumuli" :key="likedTumulus[0].node.title">
           <div class="title">
@@ -10,13 +7,12 @@
               <h3>{{ likedTumulus[0].node.title }}</h3>
               <p>{{ likedTumulus[0].node.location }} - {{likedTumulus[0].node.province}}</p>
             </div>
-            <button type="button" class="button" @click.prevent="unlike(likedTumulus[0].node.title)">
+            <button type="button" class="" @click.prevent="unlike(likedTumulus[0].node.title)">
               <app-icon class="liked" icon="heart" size="lg"></app-icon>
             </button>
           </div>
         </li>
       </ul>
-      <searchForm/>
       <Routes/>
   </div>
 </template>
@@ -82,15 +78,13 @@ export default {
   }
 
   .liked-list {
-    background-color: #fff;
-    max-width: 300px;
-    position: absolute;
+    background-color: transparent;
     width: 100%;
-    top: 7rem;
-    right: 1rem;
     display: block;
+    border-top: dotted 1rem #d87a00;
+    margin-top: -.5rem;
+    position: relative;
     z-index: 99;
-    box-shadow: 12px 12px 2px 1px rgba(0, 0, 255, .2);
   }
 
   .results {
@@ -112,13 +106,5 @@ export default {
   .result-item p,
   .result-item h3 {
     margin: 0;
-  }
-
-  @media only screen and (max-width: 400px) {
-    .liked-list {
-      max-width: 100%;
-      top: calc(50% + 2rem);
-      right: 0;
-    }
   }
 </style>

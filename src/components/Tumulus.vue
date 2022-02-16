@@ -1,27 +1,17 @@
 <template>
   <div :class="{ hide: !show }" >
     <div class="tumulus-backdrop" @click="hide()"></div>
-    <div class="tumulus">
-      <button type="button" class="button close-button" @click="hide()">
-        <app-icon class="close-icon" icon="times" size="lg"></app-icon>
-      </button>
-      <div class="background" :style="{ backgroundImage: 'url(' + imageUrl + ')' }"></div>
-      <div class="tumulus-container">
-        <div class="title">
+      <div class="tumulus">
+        <div class="background" :style="{ backgroundImage: 'url(' + tumulus.image + ')' }"></div>
           <h2>{{tumulus.title}}</h2>
-          <button type="button" class="button" @click.prevent="toggleLike(tumulus.title)">
-            <app-icon :class="{liked: liked}" icon="heart" size="lg"></app-icon>
-          </button>
-        </div>
-        <p>{{tumulus.location}} - {{tumulus.province}}</p>
-        <hr>
-        <ul class="list">
-          <li class="list-item"><app-icon class="list-icon" icon="hourglass-half" size="lg"/>{{ tumulus.age }}</li>
-          <li class="list-item"><app-icon class="list-icon" icon="arrows-alt-v" size="lg"/>{{ tumulus.height }} m</li>
-          <li class="list-item"><app-icon class="list-icon" icon="hiking" size="lg"/>{{ tumulus.accessibility }}</li>
-          <li class="list-item" v-if="tumulus.number"><app-icon class="list-icon" icon="mountain" size="lg"/>{{ tumulus.number }} tumuli</li>
-          <li class="list-item" v-if="tumulus.converted"><app-icon class="list-icon" icon="cross" size="lg"/>Gekerstend</li>
-        </ul>
+          <p>{{tumulus.location}}</p>
+          <div class="tumulus-overlay">
+            <ul class="list">
+            <li class="list-item" v-if="tumulus.age"><app-icon class="list-icon" icon="hourglass-half" size="lg"/>{{ tumulus.age }}</li>
+            <li class="list-item" v-if="tumulus.height"><app-icon class="list-icon" icon="arrows-alt-v" size="lg"/>{{ tumulus.height }} m</li>
+            <li class="list-item" v-if="tumulus.accessibility"><app-icon class="list-icon" icon="hiking" size="lg"/></li>
+            <li class="list-item" v-if="tumulus.number"><app-icon class="list-icon" icon="mountain" size="lg"/>{{ tumulus.number }} tumuli</li>
+          </ul>
       </div>
     </div>
   </div>
@@ -65,9 +55,9 @@ export default {
 
 <style scoped>
   .tumulus-backdrop {
-    width: 100vw;
-    height: 100vh;
-    position: fixed;
+    width: 100%;
+    height: 500px;
+    position: absolute;
     z-index: 9;
     top: 0;
     left: 0;
@@ -76,92 +66,10 @@ export default {
 
   .tumulus {
     background-color: #fff;
-    max-width: 400px;
     position: absolute;
-    width: 100%;
-    top: 50%;
-    transform: translateY(-50%);
-    left: calc(25% - 200px);
-    display: block;
-    z-index: 99;
+    top: 10rem;
+    left: 10rem;
+    z-index: 9;
     box-shadow: 12px 12px 2px 1px rgba(0, 0, 255, .2);
-  }
-
-  .tumulus h2 {
-    line-height: 1.5rem;
-    margin-top: 0;
-    margin-bottom: .5rem;
-  }
-
-  .tumulus p {
-    letter-spacing: 2px;
-    margin-top: 0;
-  }
-
-  .tumulus .title {
-    display: flex;
-    justify-content: space-between;
-  }
-
-  .tumulus .liked {
-    color: pink;
-  }
-
-  .tumulus-container {
-    padding: 1rem 2rem;
-  }
-
-  .background {
-    width: 100%;
-    height: 300px;
-    background-size: cover;
-  }
-
-  .list {
-    column-count: 2;
-    padding-left: 0;
-  }
-
-  .list-item {
-    list-style-type: none;
-    margin-bottom: 1rem;
-  }
-
-  .list-icon {
-    padding-right: 1rem;
-    color: rgb(216, 122, 0);
-  }
-
-  .tumulus .button {
-    border: 0;
-    border-radius: 0;
-    background-color: transparent;
-  }
-
-  .tumulus .close-button {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-  }
-
-  .close-icon {
-    color: #fff;
-    filter: drop-shadow(2px 2px 0px rgba(0, 0, 255, .2));
-  }
-
-  
-  @media only screen and (max-width: 1000px) {
-    .tumulus {
-      transform: translateY(0);
-      left: calc(50% - 200px);
-      top: calc(50% + 2rem);
-    }
-  }
-
-  @media only screen and (max-width: 400px) {
-    .tumulus {
-      left: 0;
-      top: calc(50% + 2rem);
-    }
   }
 </style>

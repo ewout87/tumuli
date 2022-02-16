@@ -1,7 +1,7 @@
 <template v-slot:search>
   <Layout>
     <ClientOnly>    
-      <l-map id="map" ref="map" :zoom="zoom" :center="center" :bounds="bounds" :options="{zoomControl: false}">
+      <l-map id="map" ref="map" :zoom="zoom" :center="center" :bounds="bounds" :options="{scrollWheelZoom: false}">
         <l-tile-layer :url="url"></l-tile-layer>
         <l-marker-cluster>
           <l-marker v-for="marker in markers" :key="marker.node.title" :lat-lng="marker.node.coordinates" :icon="icon" @click="flyToMarker(marker.node.coordinates), setTumulus(marker.node)"> 
@@ -12,13 +12,17 @@
         <l-polyline v-for="polyline in polylines" :key="polyline" :lat-lngs="polyline" :color="color"></l-polyline>
         <l-polyline v-for="route in routes" :key="route.name" :lat-lngs="route.coordinates"></l-polyline>
       </l-map>
-      <Tumulus/>
       <LikedList/>
+      <div class="inner-wide">
+        <List/>
+      </div>
+      <Tumulus/>
     </ClientOnly>
   </Layout>
 </template>
 
 <script>
+import List from '~/components/List.vue'
 import Tumulus from '~/components/Tumulus.vue'
 import { store, mutations } from '@/store.js'
 import polylines from '@/data/polylines.json'
@@ -44,7 +48,8 @@ export default {
     latLngBounds: L.latLngBounds,
     LMarkerCluster: Vue2LeafletMarkerCluster,
     Tumulus,
-    LikedList
+    LikedList,
+    List
   },
   data () {
     return {
@@ -138,7 +143,7 @@ query {
     margin-left: auto;
     position: relative; 
     z-index: 1;
-    height: 100vh;
+    height: 500px;
     width: 100%;
 }
 
