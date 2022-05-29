@@ -1,7 +1,7 @@
 <template v-slot:search>
   <Layout>
     <ClientOnly>    
-      <l-map id="map" ref="map" :zoom="zoom" :center="center" :bounds="bounds" :options="{scrollWheelZoom: false}">
+      <l-map id="map" ref="map" :zoom="zoom" :center="center" :bounds="bounds">
         <l-tile-layer :url="url"></l-tile-layer>
         <l-marker-cluster>
           <l-marker v-for="marker in markers" :key="marker.node.title" :lat-lng="marker.node.coordinates" :icon="icon" @click="flyToMarker(marker.node.coordinates), setTumulus(marker.node)"> 
@@ -140,11 +140,17 @@ query {
 
 <style scoped>
 #map {
-    margin-left: auto;
-    position: relative; 
-    z-index: 1;
-    height: 500px;
-    width: 100%;
+  margin-left: auto;
+  position: relative; 
+  z-index: 1;
+  height: 500px;
+  width: 100%;
+}
+
+@media only screen and (max-width: 800px) {
+  #map {
+    height: 100vh;
+  }
 }
 
 .leaflet-container {

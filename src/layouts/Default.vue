@@ -43,7 +43,7 @@ export default {
  methods: {
    scrollToTop() {
      window.scroll({top: 0, left: 0, behavior: 'smooth'});
-   }
+   },
  }
 }
 </script>
@@ -81,6 +81,14 @@ query {
     flex-flow: row wrap;
     background: #add19e;
     padding: 1rem 0;
+  }
+
+  @media only screen and (max-width: 800px) {
+    .navbar {
+      position: fixed;
+      z-index: 10;
+      width: 100%;
+    }
   }
   
   select,
@@ -120,7 +128,7 @@ query {
     padding: 0;
     margin-right: 1.5rem;
   }
-
+  
   .logo {
     display: flex;
     flex-flow: row wrap;
@@ -250,7 +258,7 @@ query {
     width: 100%;
     height: 150px;
     background-size: 100%;
-    background-position: center bottom -50px;
+    background-position: center center;
     background-repeat: no-repeat;
   }
 
