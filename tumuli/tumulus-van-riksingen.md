@@ -2,7 +2,7 @@
 title: Tumulus van Riksingen
 image: /uploads/screenshot-2022-07-19-at-22-53-49-geopunt-vlaanderen.png
 coords: '{"type":"Point","coordinates":[5.4570937,50.7980454]}'
-location: Hoeselt
+location: Tongeren
 province: Limburg
 accessibility: Akker
 height: "?"
