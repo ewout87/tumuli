@@ -1,0 +1,39 @@
+backend:
+  name: git-gateway
+  branch: master # Branch to update (optional; defaults to master)
+
+media_folder: "static/uploads"
+public_folder: "/uploads"
+
+collections:
+  - name: "tumuli"
+    label: "Tumuli"
+    folder: "tumuli"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Titel", name: "title", widget: "string"}
+      - {label: "Afbeelding", name: "image", widget: "image"}
+      - {label: "Coordinaten", name: "coords", widget: "map", type: "Point"}
+      - {label: "Locatie", name: "location", widget: "string"}
+      - {label: "Provincie", name: "province", widget: "string"}
+      - label: "Hoogte"
+        name: "height"
+        widget: "select"
+        options: ["<5", "≥5 <10", "≥10", "?"]
+      - {label: "Tijdperk", name: "age", widget: "string", default: '2e eeuw'}  
+      - {label: "Aantal", name: "number", widget: "number", required: false}
+      - {label: "Bekeerd", name: "converted", widget: "boolean", default: true, required: false}
+      - {label: "Genivelleerd", name: "leveled", widget: "boolean", default: true, required: false}
+      - {label: "Toegankelijk", name: "accessible", widget: "boolean", default: true, required: false}
+      - {label: "Concept", name: "draft", widget: "boolean", default: true, required: false}
+  - label: "Pages"
+    name: "pages"
+    files:
+      - label: "About Page"
+        name: "about"
+        file: "site/content/about.yml"
+        fields:
+          - {label: Title, name: title, widget: string}
+          - {label: Intro, name: intro, widget: markdown}
+          - {label: Content, name: content, widget: markdown}
