@@ -61,7 +61,6 @@ export default {
       color: 'green',
       polylines,
       search: '',
-      markers: [],
       tumulus: '',
       selected: false
     };
@@ -78,6 +77,14 @@ export default {
     },
     routes() {
       return store.routes
+    },
+    markers() {
+      const tumuli = this.$page.tumuli.edges
+      tumuli.forEach(function getCoords(tumulus) {
+        var data = JSON.parse(tumulus.node.coords)
+        tumulus.node.coordinates = data.coordinates.reverse()
+      })
+      return tumuli;
     }
   },
   async mounted () {
@@ -88,12 +95,6 @@ export default {
         iconAnchor: [16, 32]
       });
     }
-    const tumuli = this.$page.tumuli.edges
-    tumuli.forEach(function getCoords(tumulus) {
-      var data = JSON.parse(tumulus.node.coords)
-      tumulus.node.coordinates = data.coordinates.reverse()
-    })
-    this.markers = tumuli
   },
   methods: {
     zoomUpdated (zoom) {
