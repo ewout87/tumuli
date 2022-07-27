@@ -25,7 +25,6 @@ collections:
       - {label: "Aantal", name: "number", widget: "number", required: false}
       - {label: "Bekeerd", name: "converted", widget: "boolean", default: true, required: false}
       - {label: "Genivelleerd", name: "leveled", widget: "boolean", default: true, required: false}
-      - {label: "Toegankelijk", name: "accessible", widget: "boolean", default: true, required: false}
       - {label: "Concept", name: "draft", widget: "boolean", default: true, required: false}
   - label: "Pages"
     name: "pages"
